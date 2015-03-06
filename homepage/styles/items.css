@@ -1,0 +1,32 @@
+.btn {
+    float: right;
+}
+
+#items-table th:not(:last-child) {
+    cursor: pointer;
+    position: relative;
+}
+
+#items-table th:hover:not(:last-child) {
+    background-color: lightgrey;
+}
+
+.message-box {
+    max-width: 200px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 35px;
+    padding: 10px;
+    background-color: slategrey;
+    color: white;
+    border-radius: 5px;
+    display: none;
+
+    transition: bottom .5s ease;
+}
+
+/*th:hover .message-box {*/
+    /*bottom: 45px;*/
+/*}*/

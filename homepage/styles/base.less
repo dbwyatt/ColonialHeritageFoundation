@@ -1,0 +1,300 @@
+html, body {
+  margin: 0;
+  padding: 0 !important;
+  height: 100%;
+  width: 100%;
+}
+
+header {
+  padding: 36px 0;
+  text-align: center;
+  font-size: 2.5em;
+  color: #F4F4F4;
+  background-color: #0088CC;
+}
+
+#header {
+
+}
+
+#left-side {
+	box-shadow: 2px 0px 2px -2px black;
+	height: 100%;
+}
+
+#center {
+	height: 100%;
+}
+
+#footer {
+	height: 100px;
+	box-shadow: 0px -2px 2px -2px black;
+	clear: both;
+}
+
+table th {
+	vertical-align: bottom;
+}
+table td {
+	position: relative;
+}
+
+#Header {
+
+}
+
+#inline{
+display: inline-block;
+}
+
+#inline2{
+display: inline-block;
+margin-top: 8px;
+vertical-align: top;
+color: whitesmoke;
+}
+
+#admin-pad{
+margin-top: 7px;
+}
+
+.divider-vertical {
+  height: 40px;
+  margin: 5px 5px;
+  border-left: 1px solid #F2F2F2;
+  border-right: 0px solid #FFF;
+}
+
+.dropdown-toggle {
+  color: whitesmoke;
+}
+
+
+h2 {
+  color: #3162b2;
+}
+
+h6 {
+  color: whitesmoke;
+}
+
+form {
+  position: relative;
+  overflow: hidden;
+}
+
+.inline{
+  display: inline-block;
+  width: 45%;
+  margin-top: 10px;
+}
+
+.inline:nth-child(odd) {
+  float: left;
+}
+.inline:nth-child(even) {
+  float: right;
+}
+
+
+/**************************************
+***************************************
+*********   Login Form  ***************
+***************************************
+**************************************/
+//#login-container {
+//  /* width: 300px; */
+//  /* height: 225px; */
+//  background: rgba(96, 156, 255, .2);
+//  display: table;
+//  height: 100%;
+//}
+//
+//.login-form {
+//  width: 300px;
+//  padding: 0px;
+//}
+//
+//#login-form {
+//  position: relative;
+//  display: table-cell;
+//  vertical-align: middle;
+//  padding: 25px 25px;
+//  width: 100%;
+//}
+//
+//#login-form label {
+//  display: block;
+//  margin-bottom: 0px;
+//}
+//#login-form label[for=password] {
+//  margin-top: 10px;
+//}
+//
+//#login-form input {
+//  font-size: 19px;
+//  height: 35px;
+//  width: 98%;
+//  outline: none;
+//  -webkit-appearance: none;
+//  border: solid 1px lightgrey;
+//  transition: box-shadow 1s ease;
+//  /*margin-top: 5px;*/
+//  padding-left: 5px;
+//}
+//#login-form input:focus {
+//  box-shadow: 0px 0px 5px 0px black;
+//}
+//
+//#login {
+//  width: 100%;
+//  margin-top: 20px;
+//  border: none;
+//  cursor: pointer;
+//  padding: 10px 0px;
+//  outline: none;
+//  background: #609CFF;
+//  color: white;
+//  font-weight: 600;
+//  font-size: 15px;
+//  border-radius: 3px;
+//}
+//
+//#login:active {
+//  box-shadow: inset 0px 0px 10px -2px #808080;
+//}
+
+.navbar {
+	background-color: rgba(9,38,64, .8);
+
+	// navbar height mixin
+	.navbar_height {
+		line-height: 74px;
+		height: 74px;
+		padding-top: 0;
+	}
+
+	.navbar-brand{
+		padding: 5px 10px;
+		color: white !important;
+		.navbar_height;
+
+		.image{
+//			opacity: .7;
+			display: inline-block;
+
+			img{
+				align: left;
+				height: 40px;
+				width: 40px;
+			}
+		}
+	}
+
+	.navbar-nav {
+        > li {
+			> a {
+				color: whitesmoke;
+				cursor: pointer;
+				font-size: 17px;
+				.navbar_height;
+			}
+		}
+	}
+
+	.navbar-toggle {
+		border-color: transparent;
+
+		.icon-bar {
+			background-color: white;
+		}
+	}
+}
+
+.modal {
+	table {
+		position: relative;
+		margin: auto;
+		width: 100%;
+
+		th, td {
+			display: block;
+		}
+
+		th {
+			margin-top: 10px;
+
+			label {
+				color: white;
+			}
+		}
+	}
+
+	.errorlist {
+		padding: 0;
+		margin: 0;
+		pointer-events: none;
+
+		li {
+			list-style-type: none;
+			color: red;
+			position: absolute;
+			display: table;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 10px;
+			margin: auto;
+			opacity: .7;
+			font-weight: 600;
+		}
+	}
+}
+
+#login-modal {
+	text-align: center;
+	padding: 0 !important;
+
+	.modal-dialog {
+		width: initial;
+		display: inline-block;
+	}
+
+	.modal-header {
+		box-shadow: 0px 4px 10px -4px black;
+	}
+
+	.modal-body {
+		background-color: rgba(9,38,64, .8);
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+	}
+}
+
+#login-form {
+	text-align: center;
+	width: 300px;
+	padding: 30px;
+
+	//box-shadow mixin
+//	.box-shadow {
+//		box-shadow: 0px 0px 5px 0px black;
+//	}
+
+	input {
+		height: 40px;
+		width: 100%;
+		font-size: 19px;
+		padding: 0px 10px;
+//		border: none;
+//		.box-shadow;
+	}
+
+	button {
+		width: 100%;
+		margin: 25px 0px;
+		border-radius: 0px;
+		height: 40px;
+//		.box-shadow;
+	}
+}
