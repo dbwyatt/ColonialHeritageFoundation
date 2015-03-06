@@ -41,7 +41,8 @@ def loginform(request):
         if form.is_valid():
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             login(request, user)
-            return templater.render_to_response(request, 'You\'re logged in!', params)
+            params['logged_in'] = True
+            return HttpResponse(params)
 
     params['form'] = form
     return templater.render_to_response(request, 'login.html', params)

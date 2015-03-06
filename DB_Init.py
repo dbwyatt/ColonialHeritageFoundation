@@ -23,39 +23,43 @@ cursor.execute("CREATE SCHEMA PUBLIC")
 subprocess.call([sys.executable, "manage.py", "migrate"])
 
 # #### CREATE PERMISSIONS/GROUPS #####################
-Permission.objects.all().delete()
-Group.objects.all().delete()
+# Permission.objects.all().delete()
+# Group.objects.all().delete()
 
-permissionU = Permission()
-permissionU.codename = 'User'
-permissionU.content_type = ContentType.objects.get(id=9)
-permissionU.name = 'Has User Rights'
-permissionU.save()
+# permissionU = Permission()
+# permissionU.codename = 'User'
+# permissionU.content_type = ContentType.objects.get(id=9)
+# permissionU.name = 'Has User Rights'
+# permissionU.save()
 User = Group()
 User.name = "User"
 User.save()
-User.permissions.add(permissionU)
-
-permissionM = Permission()
-permissionM.codename = 'Manager'
-permissionM.content_type = ContentType.objects.get(id=8)
-permissionM.name = 'Has Manager Rights'
-permissionM.save()
+# User.permissions.add(permissionU)
+#
+# permissionM = Permission()
+# permissionM.codename = 'Manager'
+# permissionM.content_type = ContentType.objects.get(id=8)
+# permissionM.name = 'Has Manager Rights'
+# permissionM.save()
 Manager = Group()
 Manager.name = "Manager"
 Manager.save()
-Manager.permissions.add(permissionM, permissionU)
-
-permissionA = Permission()
-permissionA.codename = 'Admin'
-permissionA.content_type = ContentType.objects.get(id=7)
-permissionA.name = 'Has Admin Rights'
-permissionA.save()
+# Manager.permissions.add(permissionM, permissionU)
+#
+# permissionA = Permission()
+# permissionA.codename = 'Admin'
+# permissionA.content_type = ContentType.objects.get(id=7)
+# permissionA.name = 'Has Admin Rights'
+# permissionA.save()
 Admin = Group()
 Admin.name = "Admin"
 Admin.save()
-Admin.permissions.add(permissionA, permissionM, permissionU)
+# Admin.permissions.add(permissionA, permissionM, permissionU)
 
+
+permissions = Permission.objects.all()
+for x in permissions:
+    Admin.permissions.add(x)
 
 print('permissions initialized')
 
@@ -93,18 +97,18 @@ user.save()
 user.groups.add(Admin)
 
 user = hmod.User()
-user.username = 'DanDan'
-user.last_name = "Daniel"
-user.first_name = "Wyatt"
+user.username = 'dbwyatt'
+user.last_name = "Wyatt"
+user.first_name = "Daniel"
 user.email = 'dw@gmail.com'
 user.security_question = "School?"
 user.security_answers = "BYU"
-user.set_password('nicksucks')
+user.set_password('happy')
 user.is_superuser = False
 user.address = address
 user.photograph = photograph
 user.save()
-user.groups.add(Manager)
+user.groups.add(Admin)
 
 user = hmod.User()
 user.username = 'NickSucks'

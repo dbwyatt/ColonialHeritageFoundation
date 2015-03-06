@@ -4,7 +4,15 @@
 
 $(function() {
     $("#login-form").ajaxForm(function(data) {
-        $("#login-modal").find(".modal-body").html(data);
+        if (data == "logged_in") {
+            $("#login-modal").find("#login-form").html("<div class='success'>You're logged in!</div>");
+            setTimeout(function() {
+                window.location.reload(true);
+            }, 1000); //timeout
+        }
+        else {
+            $("#login-modal").find(".modal-body").html(data);
+        }
         $("#login-modal tr label").each(function() {
             var text = $(this).text();
             $(this).text(text.substr(0, text.length - 1));

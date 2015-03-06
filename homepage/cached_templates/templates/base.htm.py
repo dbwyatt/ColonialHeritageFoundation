@@ -4,13 +4,13 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1425585101.612862
+_modified_time = 1425618781.37164
 _enable_loop = True
 _template_filename = 'C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/base.htm'
 _template_uri = 'base.htm'
 _source_encoding = 'ascii'
 import os, os.path, re
-_exports = ['left', 'center', 'footer', 'header', 'title']
+_exports = ['center', 'footer', 'header', 'left', 'title']
 
 
 from django_mako_plus.controller import static_files 
@@ -19,20 +19,20 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def left():
-            return render_left(context._locals(__M_locals))
-        def footer():
-            return render_footer(context._locals(__M_locals))
-        def header():
-            return render_header(context._locals(__M_locals))
-        def title():
-            return render_title(context._locals(__M_locals))
-        def center():
-            return render_center(context._locals(__M_locals))
         request = context.get('request', UNDEFINED)
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        user = context.get('user', UNDEFINED)
+        def footer():
+            return render_footer(context._locals(__M_locals))
         self = context.get('self', UNDEFINED)
+        user = context.get('user', UNDEFINED)
+        def header():
+            return render_header(context._locals(__M_locals))
+        def center():
+            return render_center(context._locals(__M_locals))
+        def left():
+            return render_left(context._locals(__M_locals))
+        def title():
+            return render_title(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\r\n')
         __M_writer('\r\n')
@@ -80,18 +80,6 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_left(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def left():
-            return render_left(context)
-        __M_writer = context.writer()
-        __M_writer('\r\n\t\t')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 def render_center(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
@@ -128,10 +116,22 @@ def render_header(context,**pageargs):
             __M_writer('\t\t\t\t\t<li class="dropdown">\r\n\t\t\t\t\t  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin<span class="caret"></span></a>\r\n\t\t\t\t\t  <ul class="dropdown-menu" role="menu">\r\n\t\t\t\t\t\t<li><a href="/homepage/areas/">Areas</a></li>\r\n\t\t\t\t\t\t<li><a href="/homepage/events/">Events</a></li>\r\n\t\t\t\t\t\t<li><a href="/homepage/venues/">Venues</a></li>\r\n\t\t\t\t\t\t<li><a href="/homepage/items/">Items</a></li>\r\n\t\t\t\t\t\t<li><a href="/homepage/rentableitems/">Rentable Items</a></li>\r\n\t\t\t\t\t\t<li class="divider"></li>\r\n\t\t\t\t\t\t<li><a href="/homepage/users/">Users</a></li>\r\n\t\t\t\t\t\t<li><a href="#">Agents: New/Edit</a></li>\r\n\t\t\t\t\t  </ul>\r\n\t\t\t\t\t</li>\r\n')
         __M_writer('\t\t\t\t  </ul>\r\n\r\n\t\t\t\t  <ul class="nav navbar-nav navbar-right">\r\n')
         if user.is_authenticated():
-            __M_writer('\t\t\t\t\t  <li><a href="/homepage/logout/">Logout</a></li>\r\n\t\t\t\t\t  <li class="dropdown">\r\n\t\t\t\t\t\t<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account<span class="caret"></span></a>\r\n\t\t\t\t\t\t<ul class="dropdown-menu" role="menu">\r\n\t\t\t\t\t\t  <li><a href="#">Summary</a></li>\r\n\t\t\t\t\t\t  <li><a href="#">Recent Activity</a></li>\r\n\t\t\t\t\t\t  <li><a href="#">Something else here</a></li>\r\n\t\t\t\t\t\t <li class="divider"></li>\r\n\t\t\t\t\t\t  <li><a href="#">Account Details</a></li>\r\n\t\t\t\t\t\t  <li class="divider"></li>\r\n\t\t\t\t\t\t  <li><a href="/homepage/logout/">Log Out</a></li>\r\n\t\t\t\t\t\t</ul>\r\n\t\t\t\t\t  </li>\r\n')
+            __M_writer('\t\t\t\t\t  <li class="dropdown">\r\n\t\t\t\t\t\t<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account<span class="caret"></span></a>\r\n\t\t\t\t\t\t<ul class="dropdown-menu" role="menu">\r\n\t\t\t\t\t\t  <li><a href="#">Summary</a></li>\r\n\t\t\t\t\t\t  <li><a href="#">Recent Activity</a></li>\r\n\t\t\t\t\t\t  <li><a href="#">Something else here</a></li>\r\n\t\t\t\t\t\t <li class="divider"></li>\r\n\t\t\t\t\t\t  <li><a href="#">Account Details</a></li>\r\n\t\t\t\t\t\t  <li class="divider"></li>\r\n\t\t\t\t\t\t  <li><a href="/homepage/logout/">Log Out</a></li>\r\n\t\t\t\t\t\t</ul>\r\n\t\t\t\t\t  </li>\r\n\t\t\t\t\t  <li><a href="/homepage/logout/">Logout</a></li>\r\n')
         else:
             __M_writer('\t\t\t\t\t  <li>\r\n\t\t\t\t\t\t  <a id="login-button" data-toggle="modal" data-target="#login-modal" type="button">Login</a>\r\n\t\t\t\t\t\t  <!-- <ul class="dropdown-menu login-form" role="menu">\r\n\t\t\t\t\t\t\t<div id="login-container">\r\n\t\t\t\t\t\t\t  <form id="login-form" method="POST" action="/homepage/login/">\r\n\t\t\t\t\t\t\t\t<label for="username"><span class="label label-primary">Username</span></label>\r\n\t\t\t\t\t\t\t\t<input id="username" name=username type="text" />\r\n\t\t\t\t\t\t\t\t<label for="password"><span class="label label-primary">Password</span></label>\r\n\t\t\t\t\t\t\t\t<input id="password" name=password type="password" />\r\n\t\t\t\t\t\t\t\t<button id="login" type="submit">Login</button>\r\n\t\t\t\t\t\t\t  </form>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t  </ul> -->\r\n\t\t\t\t\t  </li>\r\n')
         __M_writer('\t\t\t\t  </ul>\r\n\t\t\t\t</div><!-- /.navbar-collapse -->\r\n\t\t\t  </div><!-- /.container-fluid -->\r\n\t\t\t</nav>\r\n\r\n\t\t\t<!-- Modal -->\r\n\t\t\t<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\r\n\t\t\t  <div class="modal-dialog">\r\n\t\t\t\t<div class="modal-content">\r\n\t\t\t\t  <div class="modal-header">\r\n\t\t\t\t\t<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\r\n\t\t\t\t\t<h4 class="modal-title" id="myModalLabel">Login</h4>\r\n\t\t\t\t  </div>\r\n\t\t\t\t  <div class="modal-body">\r\n\t\t\t\t\t...\r\n\t\t\t\t  </div>\r\n\t\t\t\t</div>\r\n\t\t\t  </div>\r\n\t\t\t</div>\r\n\t\t')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_left(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def left():
+            return render_left(context)
+        __M_writer = context.writer()
+        __M_writer('\r\n\t\t')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -151,6 +151,6 @@ def render_title(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "base.htm", "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/base.htm", "line_map": {"64": 128, "128": 57, "130": 74, "107": 137, "132": 88, "69": 133, "134": 104, "113": 137, "140": 13, "74": 138, "75": 143, "76": 143, "77": 143, "16": 4, "18": 0, "83": 127, "152": 146, "89": 127, "101": 132, "95": 132, "133": 89, "131": 75, "37": 2, "38": 4, "39": 5, "129": 71, "43": 5, "146": 13, "48": 15, "49": 19, "50": 21, "51": 21, "52": 28, "53": 28, "54": 28, "119": 34, "59": 123, "126": 34, "127": 56}, "source_encoding": "ascii"}
+{"line_map": {"64": 128, "128": 127, "107": 34, "69": 133, "134": 127, "140": 13, "74": 138, "75": 143, "76": 143, "77": 143, "16": 4, "115": 56, "18": 0, "83": 132, "121": 89, "152": 146, "89": 132, "101": 137, "118": 74, "95": 137, "37": 2, "38": 4, "39": 5, "43": 5, "114": 34, "48": 15, "49": 19, "50": 21, "51": 21, "52": 28, "53": 28, "54": 28, "119": 75, "120": 88, "116": 57, "122": 104, "59": 123, "146": 13, "117": 71}, "source_encoding": "ascii", "uri": "base.htm", "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/base.htm"}
 __M_END_METADATA
 """

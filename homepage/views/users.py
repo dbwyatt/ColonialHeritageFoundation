@@ -17,13 +17,14 @@ templater = get_renderer('homepage')
 @permission_required('homepage.add_user')
 def process_request(request):
     users = {}
+    print(">>>>>>>>>>>>>>>>> {}".format(users))
     users['users'] = hmod.User.objects.all().order_by('last_name')
-
+    print(">>>>>>>>>>>>>>>>> {}".format(users))
     return templater.render_to_response(request, 'users.html', users)
 
 
 @view_function
-@permission_required('homepage.edit_user')
+@permission_required('homepage.change_user')
 def edit(request):
     params = {}
 
@@ -62,7 +63,7 @@ def edit(request):
             user.groups.add(form.cleaned_data['group'])
 
             user.save()
-            return HttpResponseRedirect('/homepage/users/')
+            return HttpResponse(True)
 
     params['form'] = form
     params['user'] = user
