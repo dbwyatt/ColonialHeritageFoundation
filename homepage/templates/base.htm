@@ -53,7 +53,8 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				  <ul class="nav navbar-nav navbar-left">
-				  % if user.is_authenticated():
+					<li><a href="/homepage/product/">Product</a></li>
+				  % if user.is_authenticated() and user.is_superuser:
 					<li class="dropdown">
 					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin<span class="caret"></span></a>
 					  <ul class="dropdown-menu" role="menu">
@@ -73,13 +74,15 @@
 				  <ul class="nav navbar-nav navbar-right">
 				  % if user.is_authenticated():
 					  <li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account<span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Your Account<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
+						  <li><p><strong>Hello, ${ user.first_name }</strong></p></li>
+						  <li class="divider"></li>
 						  <li><a href="#">Summary</a></li>
 						  <li><a href="#">Recent Activity</a></li>
-						  <li><a href="#">Something else here</a></li>
-						 <li class="divider"></li>
-						  <li><a href="#">Account Details</a></li>
+						  <li><a href="#">Your Orders</a></li>
+						  <li class="divider"></li>
+						  <li><a href="/homepage/account/">Account Details</a></li>
 						  <li class="divider"></li>
 						  <li><a href="/homepage/logout/">Log Out</a></li>
 						</ul>

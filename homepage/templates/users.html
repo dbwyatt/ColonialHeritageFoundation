@@ -1,7 +1,6 @@
 <%inherit file="base.htm" />
 
 <%block name="center">
-    <a href="#" class="add-user btn btn-success">Add User</a>
     <table id="users-table" class="table table-striped table-bordered">
         <tr>
             <th data-name="first_name">First Name</th>
@@ -9,7 +8,7 @@
             <th data-name="username">Username</th>
             <th data-name="email">Email</th>
             <th id="change-password">Password</th>
-            <th>Actions</th>
+            <th>Actions<a href="#" class="add-user btn btn-success">Add User</a></th>
         </tr>
         %for user in users:
             <tr>
@@ -17,14 +16,14 @@
                 <td>${ user.last_name }</td>
                 <td>${ user.username }</td>
                 <td>${ user.email }</td>
-                <td><a href="/homepage/users.changepassword/${ user.id }">Change Password</a></td>
+                <td><a href="#" class="change-password" data-id="${ user.id }">Change Password</a></td>
                 <td style="text-align:center;"><a href="#" class="edit-user" data-id="${ user.id }">Edit</a> | <a href="/homepage/users.delete/${ user.id }/" class="delete-user">Delete</a></td>
             </tr>
         %endfor
     </table>
 
 	<!-- Modal -->
-	<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="user-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	    <div class="modal-dialog">
 		    <div class="modal-content">
 		  		<div class="modal-header">

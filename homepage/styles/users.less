@@ -1,0 +1,33 @@
+.btn {
+    float: right;
+}
+
+#users-table th:not(:last-child):not(#change-password) {
+    cursor: pointer;
+    position: relative;
+}
+
+#users-table th:hover:not(:last-child):not(#change-password) {
+    background-color: lightgrey;
+}
+
+.message-box {
+    max-width: 200px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 35px;
+    padding: 10px;
+    background-color: slategrey;
+    color: white;
+    border-radius: 5px;
+    display: none;
+
+    transition: bottom .5s ease;
+}
+
+#user-form {
+//	width: 300px;
+	padding: 30px;
+}

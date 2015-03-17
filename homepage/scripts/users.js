@@ -23,39 +23,57 @@ $(document).on("mouseover", "#users-table th:not(:last-child):not(#change-passwo
 
 $(function() {
 
-    $(".edit-user").on("click", function() {
-        $("#edit-modal").find(".modal-body").empty();
+    $(".edit-user, .add-user, .change-password").on("click", function() {
+        var $this = $(this);
+        var $modal = $("#user-modal");
+        var $body = $modal.find(".modal-body");
+        $body.empty();
+
+        var url = '';
+        if ($(this).hasClass("edit-user")) {
+            url = "/homepage/users.edit/" + $(this).attr("data-id");
+        }
+        else if ($(this).hasClass("add-user")) {
+            url = "/homepage/users.create/";
+        }
+        else if ($(this).hasClass("change-password")) {
+            url = "/homepage/users.changepassword/" + $(this).attr("data-id");
+        }
+
         $.ajax({
-            url: "/homepage/users.edit/" + $(this).attr("data-id"),
+            url: url,
             success: function(data) {
-                $("#edit-modal").find(".modal-body").append(data); //append modal with form
-                $("#edit-modal tr label").each(function() {
+                //append modal with form
+                $body.append(data);
+
+                //change actions of form
+                if ($this.hasClass("edit-user")) {
+                    //edit user
+                    $("#user-form").attr("action", "/homepage/users.edit/" + $this.attr("data-id"));
+                    $modal.find(".modal-title").text("Edit " + $body.find("input[name='first_name']").val() + " " + $body.find("input[name='last_name']").val());
+                }
+                else if ($this.hasClass("add-user")) {
+                    //add user
+                    $("#user-form").attr("action", "/homepage/users.create/");
+                    $modal.find(".modal-title").text("New User");
+                }
+                else if ($this.hasClass("change-password")) {
+                    //change password
+                    $("#user-form").attr("action", "/homepage/users.changepassword/" + $this.attr("data-id"));
+                    $modal.find(".modal-title").text("Change Password");
+                }
+
+                $("#user-modal tr label").each(function() {
                     var text = $(this).text();
                     $(this).text(text.substr(0, text.length - 1));
                 }); //remove colon
-                $('#edit-modal').modal(); //initiate modal
+                $('#user-modal').modal(); //initiate modal
             } //success
         }); //ajax
     }); //edit click
 
-    $("#edit-modal .modal-body").off("focus.remove", "input").on("focus.remove", "input", function() {
+    $("#user-modal .modal-body").off("focus.remove", "input").on("focus.remove", "input", function() {
         $(this).prev(".errorlist").remove();
     }); //modal input keyup
-
-    $(".add-user").on("click", function() {
-        $("#edit-modal").find(".modal-body").empty();
-        $.ajax({
-            url: "/homepage/users.create/",
-            success: function(data) {
-                $("#edit-modal").find(".modal-body").append(data); //append modal with form
-                $("#edit-modal tr label").each(function() {
-                    var text = $(this).text();
-                    $(this).text(text.substr(0, text.length - 1));
-                }); //remove colon
-                $('#edit-modal').modal(); //initiate modal
-            } //success
-        }); //ajax
-    }); //add click
-
 
 }); //ready

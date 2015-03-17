@@ -39,6 +39,12 @@ def loginform(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
+            user = hmod.User.objects.get(username=form.cleaned_data['username'])
+            request.session['user_id'] = user.id
+            try:
+                del request.session['need_to_login']
+            except KeyError:
+                pass
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             login(request, user)
             params['logged_in'] = True

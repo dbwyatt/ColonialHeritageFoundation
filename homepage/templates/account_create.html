@@ -1,0 +1,11 @@
+<%inherit file="base.htm" />
+
+<%block name="center">
+	<form id="new-user-form" method="POST" action="/homepage/account.create/">
+		<table>
+			${ form }
+		</table>
+		<button type="submit" class="btn btn-warning">Create</button>
+		<a href="/homepage/" type="button" class="btn btn-primary">Cancel</a>
+	</form>
+</%block>

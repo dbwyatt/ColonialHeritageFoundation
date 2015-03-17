@@ -1,0 +1,45 @@
+<%inherit file="base.htm" />
+
+<%block name="center">
+
+	%for item in items:
+		<div class="item-container">
+			<div class="item" data-id="${ item.entity_ptr_id }">
+				<div class="photograph" style="background-image:url('/static/homepage/media/img/${ item.itemSpecifications.photograph.imagePath }')"></div>
+				<div class="info">
+					<span class="name">${ item.itemSpecifications.name }</span>
+					<span class="price">${ item.itemSpecifications.price }</span>
+				</div>
+				<button class="buy btn btn-warning" data-id="${ item.entity_ptr_id }" data-target="#cart-modal" data-toggle="modal">Buy</button>
+				<select class='quantity'>
+					<option value='1'>1</option>
+					<option value='2'>2</option>
+					<option value='3'>3</option>
+					<option value='4'>4</option>
+					<option value='5'>5</option>
+					<option value='6'>6</option>
+					<option value='7'>7</option>
+					<option value='8'>8</option>
+					<option value='9'>9</option>
+					<option value='10'>10</option>
+				</select>
+			</div>
+		</div>
+	%endfor
+
+	<!-- Modal -->
+		<div class="modal fade" id="cart-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Cart</h4>
+			  </div>
+			  <div class="modal-body">
+				...
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+</%block>

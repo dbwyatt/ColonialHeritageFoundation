@@ -14,17 +14,16 @@ templater = get_renderer('homepage')
 
 
 @view_function
-@permission_required('homepage.add_user')
+@permission_required('homepage.admin')
 def process_request(request):
     users = {}
-    print(">>>>>>>>>>>>>>>>> {}".format(users))
     users['users'] = hmod.User.objects.all().order_by('last_name')
-    print(">>>>>>>>>>>>>>>>> {}".format(users))
+
     return templater.render_to_response(request, 'users.html', users)
 
 
 @view_function
-@permission_required('homepage.change_user')
+@permission_required('homepage.admin')
 def edit(request):
     params = {}
 
@@ -119,6 +118,7 @@ class ChangePassword(forms.Form):
 
 
 @view_function
+@permission_required('homepage.create_user')
 def create(request):
 
     params = {}

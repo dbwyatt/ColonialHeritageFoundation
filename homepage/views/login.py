@@ -14,6 +14,8 @@ templater = get_renderer('homepage')
 
 @view_function
 def process_request(request):
+    request.session['need_to_login'] = True
+    return HttpResponseRedirect('/homepage/')
     params = {}
 
     form = LoginForm()

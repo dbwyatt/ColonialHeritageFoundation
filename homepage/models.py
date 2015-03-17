@@ -167,7 +167,7 @@ class CartItem(Entity):
 
 class Transaction(Entity):
     orderDate = models.DateTimeField(auto_now=False, auto_now_add=True)
-    phone = models.IntegerField(null=True, blank=True)
+    phone = models.TextField(null=True, blank=True)
     datePacked = models.DateTimeField(auto_now=False, auto_now_add=False)
     datePaid = models.DateTimeField(auto_now=False, auto_now_add=False)
     dateShipped = models.DateTimeField(auto_now=False, auto_now_add=False)

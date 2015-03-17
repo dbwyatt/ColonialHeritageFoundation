@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_mako_plus.controller',
     'homepage',
+    'account'
 )
 
 MIDDLEWARE_CLASSES = (
