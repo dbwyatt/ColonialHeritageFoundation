@@ -1,11 +1,18 @@
 <%inherit file="base.htm" />
 
-<%block name="center">
-	<label>Shipping</label>
-	<input type="text" />
-	<label>Credit Card</label>
-	<input type="text" />
-	<button class="btn btn-success">Pay</button>
-	<a href="/homepage/checkout.receipt/" class="btn btn-warning">Receipt</a>
+<%block name="h1">
+	<h1 class="page-header">Checkout</h1>
+</%block>
 
+<%block name="center">
+	4732817300654<br>
+	411
+	<p>Total Price: $${ total }</p>
+	<form method="POST" action="">
+		<table>
+			${ form }
+		</table>
+		<button type="submit" class="btn btn-success">Pay</button>
+		<a href="/homepage/checkout.receipt/" class="btn btn-warning">Receipt</a>
+	</form>
 </%block>

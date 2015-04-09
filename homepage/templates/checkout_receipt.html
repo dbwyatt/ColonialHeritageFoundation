@@ -1,0 +1,23 @@
+<%inherit file="base_ajax.htm" />
+
+<%block name="content">
+
+	%for item in items:
+		<div class="item-container" style="width:300px;display:block;border:solid 1px grey;border-radius: 3px;box-shadow:0px 0px 5px 0px black;">
+			<div class="item" data-id="${ item.entity_ptr_id }" style="display:block;padding:10px;position:absolute;top:0;bottom:0;right:0;left:0;">
+				<div class="photograph" style="background-image:url('/static/homepage/media/img/${ item.itemSpecifications.photograph.imagePath }')"></div>
+				<div class="info" style="height:15%;width:100%;clear:both;overflow:hidden;padding:10px;font-size:21px;">
+					<span class="name" style="float:left;">Name: ${ item.itemSpecifications.name }</span>
+					<br>
+					<span class="price" style="float:right">Price: $${ item.itemSpecifications.price }</span>
+				</div>
+				<label for="qty">Qty: </label>
+				<input name="qty" id="qty" type="text" value=${ item.shopping_cart_quantity} style="width: 50px;display: inline-block;	"/>
+			</div>
+		</div>
+		<br>
+	%endfor
+
+	<p>Total price: $${ total }</p>
+
+</%block>

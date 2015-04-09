@@ -36,7 +36,7 @@ def edit(request):
         'startDate': event.startDate,
         'endDate': event.endDate,
         'mapFileName': event.mapFileName,
-        'venue': event.venueID_id
+        'venueName': event.venueName
     })
     if request.method == 'POST':
         form = EventsForm(request.POST)
@@ -46,7 +46,7 @@ def edit(request):
             event.startDate = form.cleaned_data['startDate']
             event.endDate = form.cleaned_data['endDate']
             event.mapFileName = form.cleaned_data['mapFileName']
-            event.venueID_id = form.cleaned_data['venue']
+            event.venueName = form.cleaned_data['venueName']
             event.save()
             return HttpResponseRedirect('/homepage/events/')
 
@@ -61,7 +61,7 @@ class EventsForm(forms.Form):
     startDate = forms.DateTimeField(label='Start Date')
     endDate = forms.DateTimeField(label='End Date')
     mapFileName = forms.CharField(label='Map File Name')
-    venue = forms.ChoiceField(label='Venue', choices=[(x.entity_ptr_id, x.name) for x in hmod.Venue.objects.all()])
+    venueName = forms.CharField(label="Venue Name")
 
     def clean_name(self):
         if len(self.cleaned_data['name']) < 1:
@@ -85,7 +85,7 @@ def create(request):
         'startDate': '',
         'endDate': '',
         'mapFileName': '',
-        'venue': ''
+        'venueName': ''
     })
     if request.method == 'POST':
         form = EventsForm(request.POST)
@@ -96,7 +96,7 @@ def create(request):
             event.startDate = form.cleaned_data['startDate']
             event.endDate = form.cleaned_data['endDate']
             event.mapFileName = form.cleaned_data['mapFileName']
-            event.venueID_id = form.cleaned_data['venue']
+            event.venueName = form.cleaned_data['venueName']
             event.save()
             return HttpResponseRedirect('/homepage/events/')
 

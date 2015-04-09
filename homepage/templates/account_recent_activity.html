@@ -1,0 +1,13 @@
+<%inherit file="base.htm" />
+<%! import datetime %>
+
+<%block name="h1">
+	<h1 class="page-header">Recent Activity<br><small>Recent logins</small></h1>
+</%block>
+
+<%block name="center">
+	<address>
+		<strong class="name">Last Login</strong><br>
+		<span class="name">${ datetime.datetime.strftime(user.converted_time, '%A, %B %d, %Y') }<br>${ datetime.datetime.strftime(user.converted_time, '%I:%M %p') }</span>
+	</address>
+</%block>

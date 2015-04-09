@@ -7,6 +7,8 @@
 <!DOCTYPE html>
 <html>
   <meta charset="UTF-8">
+  <meta name="description" content="Management system for the Colonial Heritage Foundation.">
+  <meta name="keywords" content="CHF, Colonial Heritage Foundation">
   <head>
 
 	<title>
@@ -54,18 +56,20 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				  <ul class="nav navbar-nav navbar-left">
 					<li><a href="/homepage/product/">Product</a></li>
+					<li><a href="/homepage/view_events/">Events</a></li>
 				  % if user.is_authenticated() and user.is_superuser:
 					<li class="dropdown">
 					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin<span class="caret"></span></a>
 					  <ul class="dropdown-menu" role="menu">
-						<li><a href="/homepage/areas/">Areas</a></li>
-						<li><a href="/homepage/events/">Events</a></li>
-						<li><a href="/homepage/venues/">Venues</a></li>
-						<li><a href="/homepage/items/">Items</a></li>
-						<li><a href="/homepage/rentableitems/">Rentable Items</a></li>
+						<li><a href="/homepage/areas/">Edit Areas</a></li>
+						<li><a href="/homepage/events/">Edit Events</a></li>
+						<li><a href="/homepage/items/">Edit Items</a></li>
+						<li><a href="/homepage/rentableitems/">Edit Rentable Items</a></li>
 						<li class="divider"></li>
 						<li><a href="/homepage/users/">Users</a></li>
-						<li><a href="#">Agents: New/Edit</a></li>
+						<li><a href="/homepage/rentableitems.late/">Late Rentals</a></li>
+						<li><a href="/homepage/rentableitems.email_late/">Email Late Rentals</a></li>
+						<li><a href="/homepage/rentableitems_return/">Returns</a></li>
 					  </ul>
 					</li>
 				  % endif
@@ -73,13 +77,29 @@
 
 				  <ul class="nav navbar-nav navbar-right">
 				  % if user.is_authenticated():
+					  <li>
+						  <a class="cart" data-target="#cart-modal" data-toggle="modal">Cart
+							  <img src="/static/homepage/media/cart.png" />
+							  <sup>
+								  <div class="badge">
+									  <% cart_length = 0 %>
+									  %if 'shopping_cart' in request.session:
+										  %for x, y in request.session['shopping_cart'].items():
+											  <% cart_length += int(y) %>
+										  %endfor
+									  %endif
+									  ${ cart_length }
+								  </div>
+							  </sup>
+						  </a>
+					  </li>
 					  <li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Your Account<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 						  <li><p><strong>Hello, ${ user.first_name }</strong></p></li>
 						  <li class="divider"></li>
 						  <li><a href="#">Summary</a></li>
-						  <li><a href="#">Recent Activity</a></li>
+						  <li><a href="/homepage/account.recent_activity/">Recent Activity</a></li>
 						  <li><a href="#">Your Orders</a></li>
 						  <li class="divider"></li>
 						  <li><a href="/homepage/account/">Account Details</a></li>
@@ -87,7 +107,7 @@
 						  <li><a href="/homepage/logout/">Log Out</a></li>
 						</ul>
 					  </li>
-					  <li><a href="/homepage/logout/">Logout</a></li>
+					  <li><a id="logout-button">Logout</a></li>
 				  % else:
 					  <li>
 						  <a id="login-button" data-toggle="modal" data-target="#login-modal" type="button">Login</a>
@@ -103,11 +123,23 @@
 							</div>
 						  </ul> -->
 					  </li>
+					  <li><a href="/homepage/account.create/">Register</a></li>
 				  % endif
 				  </ul>
 				</div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
 			</nav>
+
+			<!-- Search Bar -->
+			<div id="search">
+				<div id="search-container">
+					<form id="search-form">
+						<img src="/static/homepage/media/search.png/" />
+						<input type="text" id="search-box" />
+						<button type="button" for="search-box">Search</button>
+					</form>
+				</div>
+			</div>
 
 			<!-- Modal -->
 			<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -123,21 +155,50 @@
 				</div>
 			  </div>
 			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="cart-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Cart</h4>
+				  </div>
+				  <div class="modal-body">
+					...
+				  </div>
+				</div>
+			  </div>
+			</div>
 		</%block>
 	</div>
+
+	<%block name="jumbotron"></%block>
 
 	<div id="left" class="col-md-1">
 		<%block name="left">
 		</%block>
 	</div>
 
-	<div id="center" class="col-md-10">
+	<div id="center" class="col-md-12">
+		<%block name="h1"><h1 class="page-header">Colonial Heritage Foundation</h1></%block>
 		<%block name="center">
+			<p>
+				We are the Colonial Heritage Foundation. We seek to create a fun learning environment in which individuals can learn more about our country's heritage while have fun at the same time.
+			</p>
 		</%block>
 	</div>
 
 	<div id="footer">
 		<%block name="footer">
+			<ul>
+				<li class="footer-list">
+					<span class="footer-item-header footer-item">Company</span>
+					<a class="footer-item">About Us</a>
+					<a class="footer-item">Contact Us</a>
+				</li>
+			</ul>
+			<span class="copyright pull-right">Copyright &copy; Colonial Heritage Foundation, Inc.</span>
 		</%block>
 	</div>
 

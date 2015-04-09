@@ -1,0 +1,12 @@
+<%inherit file="base.htm" />
+
+<%block name="h1">
+	<h1>Checkout Success</h1>
+</%block>
+
+<%block name="center">
+	${ success }
+	<br><br>
+	<a href="/homepage/product/" class="btn btn-default">Continue Shopping</a>
+	<a class="cart btn btn-warning" data-target="#cart-modal" data-toggle="modal">View your Cart</a>
+</%block>

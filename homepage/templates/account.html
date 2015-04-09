@@ -1,8 +1,39 @@
 <%inherit file="base.htm" />
+<%! import datetime %>
+
+<%block name="h1">
+	<h1 class="page-header">Account<br><small>View and change your information here</small></h1>
+</%block>
 
 <%block name="center">
+	<address>
+		<img class="user-img" src="/static/homepage/media/img/${ user.photograph.imagePath }" /><br><br>
+		<strong class="name">Full Name</strong><br>
+		<span class="name">${ user.first_name } ${ user.last_name }</span><br>
+		<br>
+		<strong>Account Created</strong><br>
+		<span class="creation-date">${ datetime.datetime.strftime(user.converted_time, '%A, %B %d, %Y') }<br>${ datetime.datetime.strftime(user.converted_time, '%I:%M %p') }</span>
+	</address>
+	<address>
+		<strong>Username</strong><br>
+		<span class="username">${ user.username }</span><br>
+		<br>
+		<strong>Email</strong><br>
+		<span class="email">${ user.email }</span><br>
+		<br>
+		<strong>Phone</strong><br>
+		<span class="phone">${ user.phone }</span><br>
+		<br>
+		<strong>Address</strong><br>
+		<span class="address1">${ user.address.address1 }</span><br>
+		%if user.address.address2 is not null:
+			<span class="address2">${ user.address.address2 }</span>
+		%endif
+		<span class="city-state-zip">${ user.address.city }, ${ user.address.state }  ${ user.address.zip }</span><br>
+	</address>
 	<button class="change-password btn btn-primary" data-id="${ request.session['user_id'] }">Change Password</button>
-    <!-- Modal -->
+   	<button class="update-info btn btn-primary" data-id="${ request.session['user_id'] }">Update Information</button>
+	<!-- Modal -->
 	<div class="modal fade" id="user-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	    <div class="modal-dialog">
 		    <div class="modal-content">

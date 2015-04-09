@@ -17,8 +17,31 @@ $(function() {
         }); //ajax
     }); //login click
 
-    $("#login-modal .modal-body").off("focus.remove", "input").on("focus.remove", "input", function() {
+    $(document).off("focus.remove", "form input").on("focus.remove", "form input", function() {
         $(this).prev(".errorlist").remove();
     }); //modal input keyup
+
+    $('#logout-button').on('click', function() {
+        $.ajax({
+            url: '/homepage/index.logout_page/',
+            success: function() {
+                window.location.reload(true);
+            }
+        })
+    }); //logout
+
+    $(document).on("click", ".cart", function() {
+        $.ajax({
+            url: "/homepage/cart.getcart/",
+            async: false,
+            success: function(data) {
+                $("#cart-modal").find(".modal-body").html(data);
+                $("#cart-modal tr label").each(function() {
+                    var text = $(this).text();
+                    $(this).text(text.substr(0, text.length - 1));
+                }); //remove colon
+            } //success
+        }); //ajax
+    }); //click
 
 }); //ready

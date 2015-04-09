@@ -1,14 +1,16 @@
 .item-container {
 	display: inline-block;
-	min-width: 25%;
+	min-width: 300px;
 	min-height: 400px;
 	box-shadow: 0px 0px 0px 1px lightgrey;
 	position: relative;
+	margin-right: 20px;
+	box-shadow: 0px 0px 5px 0px #808080;
 
 	.item {
 		display: block;
 		padding: 10px;
-		position: absolute;
+//		position: absolute;
 		top: 0;
 		bottom: 0;
 		right: 0;
@@ -18,15 +20,15 @@
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: contain;
-			height: 75%;
+			height: 270px;
 		}
 
 		.info {
-			height: 15%;
+//			height: 15%;
 			width: 100%;
 			clear: both;
 			overflow: hidden;
-			padding: 10px;
+			padding: 20px 10px;
 			font-size: 21px;
 
 			.name {
@@ -37,15 +39,35 @@
 			}
 		}
 
-		.buy {
-			width: 75%;
-			display: inline-block;
-			margin: auto;
-			left: 0;
-			right: 0;
-			transition: all .5s linear;
-		}
+		.purchase {
+			clear: both;
+			overflow: hidden;
+			display: block;
+			padding: 0 5px;
 
+			.buy {
+				width: 50%;
+				display: inline-block;
+				//			margin: auto;
+				//			left: 0;
+				right: 0;
+				transition: all .5s linear;
+				float: right;
+			}
+
+			.label {
+				color: initial;
+				vertical-align: middle;
+			}
+
+			select {
+				height: 35px;
+				width: 50px;
+				display: inline-block;
+				position: relative;
+				vertical-align: middle;
+			}
+		}
 	}
 }
 

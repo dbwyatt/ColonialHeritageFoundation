@@ -8,7 +8,7 @@ $(function() {
             $("#login-modal").find("#login-form").html("<div class='success'>You're logged in!</div>");
             setTimeout(function() {
                 window.location.reload(true);
-            }, 1000); //timeout
+            }, 10); //timeout
         }
         else {
             $("#login-modal").find(".modal-body").html(data);

@@ -1,0 +1,11 @@
+<%inherit file="base_ajax.htm" />
+
+<%block name="content">
+	<form id="user-form" class="user-edit" method="POST" action="/homepage/account.edit/${ user.id }">
+		<table>
+			${ form }
+		</table>
+		<button type="submit" class="btn btn-primary">Save</button>
+		<button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+	</form>
+</%block>

@@ -1,2 +1,2 @@
-.btn{float:right}
+.btn{float:right;vertical-align:top;margin-left:20px}#user-form{padding:40px}#user-form .btn{float:right;margin-left:10px;margin-top:20px}#user-form select{width:100%;height:40px}address{display:inline-block;vertical-align:top}address img{display:inline-block;vertical-align:top;padding-right:20px;box-shadow:1px 0 0 0 #eee;margin-right:20px}address strong.name{font-size:19px}address .name{font-size:17px}address .address2{display:block}
 /* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */

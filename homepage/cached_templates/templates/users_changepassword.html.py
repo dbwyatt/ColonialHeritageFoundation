@@ -4,7 +4,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1425676237.905363
+_modified_time = 1428541985.370524
 _enable_loop = True
 _template_filename = 'C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/users_changepassword.html'
 _template_uri = 'users_changepassword.html'
@@ -28,9 +28,9 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        form = context.get('form', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        form = context.get('form', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -45,13 +45,13 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        form = context.get('form', UNDEFINED)
         def content():
             return render_content(context)
-        form = context.get('form', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <form id="user-form" method="POST" action="/homepage/users.changepassword/">\r\n        <table>\r\n            ')
         __M_writer(str( form ))
-        __M_writer('\r\n        </table>\r\n        <button class="btn btn-warning" data-dismiss="modal">Cancel</button>\r\n        <button type="submit" class="btn btn-primary">Save</button>\r\n    </form>\r\n')
+        __M_writer('\r\n        </table>\r\n\t\t<button type="submit" class="btn btn-primary">Save</button>\r\n\t\t<button class="btn btn-warning" data-dismiss="modal">Cancel</button>\r\n    </form>\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -59,6 +59,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "users_changepassword.html", "source_encoding": "ascii", "line_map": {"35": 1, "52": 3, "53": 6, "54": 6, "27": 0, "60": 54, "45": 3}, "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/users_changepassword.html"}
+{"uri": "users_changepassword.html", "line_map": {"35": 1, "52": 3, "53": 6, "54": 6, "27": 0, "60": 54, "45": 3}, "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/users_changepassword.html", "source_encoding": "ascii"}
 __M_END_METADATA
 """

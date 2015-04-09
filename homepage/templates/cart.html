@@ -10,18 +10,18 @@
 					<span class="name">${ item.itemSpecifications.name }</span>
 					<span class="price">${ item.itemSpecifications.price }</span>
 				</div>
-				qty: ${ cart['10']}
-				%for x in cart:
-					<span>${ x }</span>
-					%if x == item.entity_ptr_id:
-						qty: x
-					%endif
-				%endfor
+				<label for="qty">Qty: </label>
+				<input name="qty" id="qty" type="text" value=${ item.shopping_cart_quantity} style="width: 50px;display: inline-block;	"/>
+				<a data-id="${ item.entity_ptr_id }" class="update btn btn-warning">Update</a>
 				<a data-id="${ item.entity_ptr_id }" class="delete btn btn-warning">Delete</a>
 			</div>
 		</div>
 	%endfor
 
-	<a href="/homepage/checkout/" class="btn btn-warning">Checkout</a>
+	%if len(items) > 0:
+		<a href="/homepage/checkout/" class="btn btn-warning">Checkout</a>
+	%else:
+		<p class="empty-cart">Your cart is empty</p>
+	%endif
 
 </%block>

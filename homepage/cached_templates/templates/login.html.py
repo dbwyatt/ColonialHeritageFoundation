@@ -4,7 +4,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1425779435.179376
+_modified_time = 1428463460.99526
 _enable_loop = True
 _template_filename = 'C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/login.html'
 _template_uri = 'login.html'
@@ -51,7 +51,7 @@ def render_content(context,**pageargs):
         __M_writer = context.writer()
         __M_writer('\r\n\t<form id="login-form" method="POST" action="/homepage/index.loginform/">\r\n\t\t<table>\r\n\t\t\t')
         __M_writer(str( form ))
-        __M_writer('\r\n\t\t</table>\r\n\t\t<button type="submit" class="btn btn-primary">Login</button>\r\n\t\t<a href="/homepage/account.create/" class="register">Not registered yet? <span class="join">Join here!</span></a>\r\n\t</form>\r\n')
+        __M_writer('\r\n\t\t</table>\r\n\t\t<a href="/password_reset/" class="register reset">Forgot your password?</a><br />\r\n\t\t<button type="submit" class="btn btn-primary">Login</button>\r\n\t\t<a href="/homepage/account.create/" class="register">Not registered yet? <span class="join">Join here!</span></a>\r\n\t</form>\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()

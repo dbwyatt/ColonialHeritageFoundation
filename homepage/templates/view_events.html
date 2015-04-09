@@ -1,0 +1,40 @@
+<%inherit file="base.htm" />
+<%! import datetime %>
+
+<%block name="h1">
+	<h1 class="page-header">Events</h1>
+</%block>
+
+<%block name="center">
+    <table id="events-table" class="table">
+        <tr>
+            <th data-name="name">Name</th>
+            <th data-name="startDate">Start Date</th>
+            <th data-name="endDate">End Date</th>
+            <th data-name="venueID">Venue</th>
+        </tr>
+        %for event in events:
+            <tr data-id="${ event.entity_ptr_id }" class="event" data-target="#event-description-modal" data-toggle="modal">
+                <td><a>${ event.name }</a></td>
+                <td>${ datetime.datetime.strftime(event.startDate, '%A, %B %d, %Y') } - ${ datetime.datetime.strftime(event.startDate, '%I:%M %p') }</td>
+				<td>${ datetime.datetime.strftime(event.endDate, '%A, %B %d, %Y') } - ${ datetime.datetime.strftime(event.endDate, '%I:%M %p') }</td>
+                <td>${ event.venueName }</td>
+			</tr>
+        %endfor
+    </table>
+
+	<!-- Modal -->
+	<div class="modal fade" id="event-description-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">Event Details</h4>
+		  </div>
+		  <div class="modal-body">
+			...
+		  </div>
+		</div>
+	  </div>
+	</div>
+</%block>

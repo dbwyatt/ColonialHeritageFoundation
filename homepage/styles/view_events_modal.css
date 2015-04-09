@@ -1,0 +1,17 @@
+#event-description-modal th, #event-description-modal td {
+    display: table-cell;
+}
+
+#event-description-modal .modal-body {
+    /*background-color: white !important;*/
+}
+
+h2 {
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+}
+
+#areas {
+    min-width: 500px;
+}

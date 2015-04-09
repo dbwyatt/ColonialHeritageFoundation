@@ -35,6 +35,7 @@ LOGOUT_URL = '/homepage/logout/'
 # Application definition
 
 INSTALLED_APPS = (
+    'homepage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,8 +43,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_mako_plus.controller',
-    'homepage',
-    'account'
+    'account',
+    'password_reset'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -75,6 +76,17 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = '212test2014@gmail.com'
+EMAIL_HOST_PASSWORD = '403test2014'
+EMAIL_USE_SSL = True
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+
+PASSWORD_RESET_TIMEOUT_DAYS = 1
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

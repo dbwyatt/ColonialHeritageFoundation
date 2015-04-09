@@ -1,0 +1,69 @@
+<%inherit file="base.htm" />
+
+<%block name="h1">
+	<h1>Overdue Rentals</h1>
+</%block>
+
+<%block name="center">
+	<h2>1 - 29 days late</h2>
+	<table class="table table-striped table-bordered">
+		<tr>
+			<th>Item Name</th>
+			<th>Times Rented</th>
+			<th>Due Date</th>
+		</tr>
+		%for x in itemsnow:
+			<tr>
+				<td>${ x.rentalItem.wardrobeitem_ptr.serializeditem_ptr.item_ptr.itemSpecifications.name }</td>
+				<td>${ x.rentalItem.timesRented }</td>
+				<td>${ x.dueDate }</td>
+			</tr>
+		%endfor
+	</table>
+	<h2>30 - 59 days late</h2>
+	<table class="table table-striped table-bordered">
+		<tr>
+			<th>Item Name</th>
+			<th>Times Rented</th>
+			<th>Due Date</th>
+		</tr>
+		%for x in items30:
+			<tr>
+				<td>${ x.rentalItem.wardrobeitem_ptr.serializeditem_ptr.item_ptr.itemSpecifications.name }</td>
+				<td>${ x.rentalItem.timesRented }</td>
+				<td>${ x.dueDate }</td>
+			</tr>
+		%endfor
+	</table>
+	<h2>60 - 89 days late</h2>
+	<table class="table table-striped table-bordered">
+		<tr>
+			<th>Item Name</th>
+			<th>Times Rented</th>
+			<th>Due Date</th>
+		</tr>
+		%for x in items60:
+			<tr>
+				<td>${ x.rentalItem.wardrobeitem_ptr.serializeditem_ptr.item_ptr.itemSpecifications.name }</td>
+				<td>${ x.rentalItem.timesRented }</td>
+				<td>${ x.dueDate }</td>
+			</tr>
+		%endfor
+	</table>
+	<h2>90 or more days late</h2>
+	<table class="table table-striped table-bordered">
+		<tr>
+			<th>Item Name</th>
+			<th>Times Rented</th>
+			<th>Due Date</th>
+		</tr>
+		%for x in items90:
+			<tr>
+				<td>${ x.rentalItem.wardrobeitem_ptr.serializeditem_ptr.item_ptr.itemSpecifications.name }</td>
+				<td>${ x.rentalItem.timesRented }</td>
+				<td>${ x.dueDate }</td>
+			</tr>
+		%endfor
+	</table>
+
+</%block>

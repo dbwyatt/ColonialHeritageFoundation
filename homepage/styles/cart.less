@@ -1,0 +1,61 @@
+.item-container {
+	display: inline-block;
+	min-width: 25%;
+	min-height: 400px;
+	box-shadow:0 0 0 1px lightgrey;
+	position: relative
+}
+
+.item-container .item {
+	display: block;
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left:0
+}
+
+.item-container .item .photograph {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 75%
+}
+
+.item-container .item .info {
+	height: 15%;
+	width: 100%;
+	clear: both;
+	overflow: hidden;
+	padding: 10px;
+	font-size: 21px
+}
+
+.item-container .item .info .name {
+	float: left
+}
+
+.item-container .item .info .price {
+	float: right
+}
+
+.item-container .item .buy {
+	width: 75%;
+	display: inline-block;
+	margin: auto;
+	left: 0;
+	right: 0;
+	transition: all .5s linear;
+}
+
+.modal .item-container {
+	width: 300px;
+	display: block;
+}
+
+.empty-cart {
+	color: white;
+	font-size: 19px;
+	margin: 50px;
+}

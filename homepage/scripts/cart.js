@@ -19,12 +19,32 @@ $(function() {
         }); //remove colon
     }); //ajax
 
-    $(".delete").on("click", function() {
+    $(document).on("click", ".delete", function() {
         $.ajax({
             url: "/homepage/cart.delete/" + $(this).attr("data-id"),
             success: function(data) {
                 window.location.reload(true);
             }
         })
+    })
+
+    $(document).on("click", ".update", function() {
+        $this = $(this);
+        $(this).text("Updating...");
+        var id = $(this).attr("data-id");
+        var select = $(this).parent().find("#qty").val();
+        var quantity = select;
+
+        $.ajax({
+            url: "/homepage/cart.updatecart/" + id + "/" + quantity,
+            async: false,
+            success: function() {
+                $this.text("Done");
+                setTimeout(function(){
+                    $this.text("Update");
+                    window.location = window.location;
+                }, 10);
+            } //success
+        }); //ajax
     })
 }); //ready

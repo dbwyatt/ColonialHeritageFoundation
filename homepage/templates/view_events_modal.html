@@ -1,0 +1,32 @@
+<%inherit file="base_ajax.htm" />
+
+<%block name="content">
+    <table id="description" class="table">
+		<tr>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td><p class="description">${ data.description }</p></td>
+		</tr>
+    </table>
+	<br><br><br>
+	<table id="areas" class="table">
+		<tr>
+			<th>Areas</th>
+			<th>Area Description</th>
+			<th>Items for Sale</th>
+		</tr>
+		%for x in areas:
+			<tr>
+				<td>${ x.name }</td>
+				<td>${ x.description }</td>
+				<td>
+					%for i, j in enumerate(x.sale_items, start=1):
+						${ i }. ${ j.name }<br>
+					%endfor
+				</td>
+			</tr>
+		%endfor
+	</table>
+
+</%block>
