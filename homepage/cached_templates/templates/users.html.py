@@ -4,13 +4,13 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1425764858.845093
+_modified_time = 1428618514.304003
 _enable_loop = True
 _template_filename = 'C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/users.html'
 _template_uri = 'users.html'
 _source_encoding = 'ascii'
 import os, os.path, re
-_exports = ['center']
+_exports = ['h1', 'center']
 
 
 def _mako_get_namespace(context, name):
@@ -28,10 +28,17 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        users = context.get('users', UNDEFINED)
+        def h1():
+            return render_h1(context._locals(__M_locals))
         def center():
             return render_center(context._locals(__M_locals))
+        users = context.get('users', UNDEFINED)
         __M_writer = context.writer()
+        __M_writer('\r\n\r\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'h1'):
+            context['self'].h1(**pageargs)
+        
+
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'center'):
             context['self'].center(**pageargs)
@@ -42,14 +49,26 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_h1(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def h1():
+            return render_h1(context)
+        __M_writer = context.writer()
+        __M_writer('\r\n\t<h1 class="page-header">Users</h1>\r\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 def render_center(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        users = context.get('users', UNDEFINED)
         def center():
             return render_center(context)
+        users = context.get('users', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\r\n    <table id="users-table" class="table table-striped table-bordered">\r\n        <tr>\r\n            <th data-name="first_name">First Name</th>\r\n            <th data-name="last_name">Last Name</th>\r\n            <th data-name="username">Username</th>\r\n            <th data-name="email">Email</th>\r\n            <th id="change-password">Password</th>\r\n            <th>Actions<a href="#" class="add-user btn btn-success">Add User</a></th>\r\n        </tr>\r\n')
+        __M_writer('\r\n\t<a href="#" class="add-user btn btn-success">Add User</a>\r\n    <table id="users-table" class="table table-striped table-bordered">\r\n        <tr>\r\n            <th data-name="first_name">First Name</th>\r\n            <th data-name="last_name">Last Name</th>\r\n            <th data-name="username">Username</th>\r\n            <th data-name="email">Email</th>\r\n            <th id="change-password">Password</th>\r\n            <th>Actions</th>\r\n        </tr>\r\n')
         for user in users:
             __M_writer('            <tr>\r\n                <td>')
             __M_writer(str( user.first_name ))
@@ -74,6 +93,6 @@ def render_center(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "users.html", "source_encoding": "ascii", "line_map": {"64": 19, "65": 20, "66": 20, "67": 20, "68": 20, "69": 23, "75": 69, "27": 0, "35": 1, "45": 3, "52": 3, "53": 13, "54": 14, "55": 15, "56": 15, "57": 16, "58": 16, "59": 17, "60": 17, "61": 18, "62": 18, "63": 19}, "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/users.html"}
+{"filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/users.html", "uri": "users.html", "line_map": {"64": 7, "71": 7, "72": 18, "73": 19, "74": 20, "75": 20, "76": 21, "77": 21, "78": 22, "79": 22, "80": 23, "81": 23, "82": 24, "83": 24, "84": 25, "85": 25, "86": 25, "87": 25, "88": 28, "27": 0, "94": 88, "37": 1, "42": 5, "52": 3, "58": 3}, "source_encoding": "ascii"}
 __M_END_METADATA
 """

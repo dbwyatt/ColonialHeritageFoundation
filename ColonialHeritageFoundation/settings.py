@@ -77,11 +77,11 @@ DATABASES = {
     }
 }
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = '212test2014@gmail.com'
-EMAIL_HOST_PASSWORD = '403test2014'
-EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.colonialfoundations.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'webmaster@colonialfoundations.com'
+EMAIL_HOST_PASSWORD = '212BrickOven'
+EMAIL_USE_TLS = True
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER

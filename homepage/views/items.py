@@ -16,7 +16,7 @@ templater = get_renderer('homepage')
 @permission_required('homepage.add_user')
 def process_request(request):
     items = {}
-    items['items'] = hmod.Item.objects.all().order_by('name')
+    items['items'] = hmod.Item.objects.all().order_by('itemSpecifications__name')
 
     return templater.render_to_response(request, 'items.html', items)
 
@@ -31,11 +31,11 @@ def edit(request):
         return HttpResponseRedirect('/homepage/items/')
 
     form = ItemEditForm(initial={
-        'name': item.name,
-        'description': item.description,
-        'value': item.value,
-        'standardRentalPrice': item.standardRentalPrice,
-        'owner': item.legalEntityID_id,
+        'name': item.itemSpecifications.name,
+        'description': item.itemSpecifications.description,
+        'price': item.itemSpecifications.price,
+        'owner': item.user.first_name + item.user.last_name,
+        'cost': item.cost,
     })
     if request.method == 'POST':
         form = ItemEditForm(request.POST)
@@ -56,9 +56,9 @@ def edit(request):
 class ItemEditForm(forms.Form):
     name = forms.CharField(label='Name')
     description = forms.CharField(label='Description')
-    value = forms.DecimalField(label='Value')
-    standardRentalPrice = forms.DecimalField(label='Standard Rental Price')
-    owner = forms.ChoiceField(label='Owner', choices=[(x.entity_ptr_id, x.givenName) for x in hmod.LegalEntity.objects.all()])
+    price = forms.CharField(label='Price')
+    owner = forms.ChoiceField(label='Owner', choices=[(x.id, x.first_name + ' ' + x.last_name) for x in hmod.User.objects.all()])
+    cost = forms.CharField(label='Cost')
 
     def clean_name(self):
         if len(self.cleaned_data['name']) < 1:
@@ -75,8 +75,8 @@ class ItemEditForm(forms.Form):
             raise forms.ValidationError('Please enter a value.')
         return self.cleaned_data['value']
 
-    def clean_standardRentalPrice(self):
-        if self.cleaned_data['standardRentalPrice'] < 1:
+    def clean_cost(self):
+        if self.cleaned_data['standardRentalPrice'] < 0:
             raise forms.ValidationError('Please enter a rental price.')
         return self.cleaned_data['standardRentalPrice']
 
@@ -89,9 +89,9 @@ def create(request):
     form = ItemEditForm(initial={
         'name': '',
         'description': '',
-        'value': '',
-        'standardRentalPrice': '',
+        'price': '',
         'owner': '',
+        'cost': '',
     })
     if request.method == 'POST':
         form = ItemEditForm(request.POST)
