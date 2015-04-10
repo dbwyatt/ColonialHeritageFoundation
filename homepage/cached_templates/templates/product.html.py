@@ -4,13 +4,13 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1428641327.322671
+_modified_time = 1428686869.056045
 _enable_loop = True
 _template_filename = 'C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/product.html'
 _template_uri = 'product.html'
 _source_encoding = 'ascii'
 import os, os.path, re
-_exports = ['h1', 'center']
+_exports = ['center', 'h1']
 
 
 def _mako_get_namespace(context, name):
@@ -28,11 +28,11 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def h1():
-            return render_h1(context._locals(__M_locals))
         def center():
             return render_center(context._locals(__M_locals))
         items = context.get('items', UNDEFINED)
+        def h1():
+            return render_h1(context._locals(__M_locals))
         range = context.get('range', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
@@ -45,18 +45,6 @@ def render_body(context,**pageargs):
             context['self'].center(**pageargs)
         
 
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_h1(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def h1():
-            return render_h1(context)
-        __M_writer = context.writer()
-        __M_writer('\r\n\t<h1 class="page-header">Products</h1>\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -111,8 +99,20 @@ def render_center(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_h1(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def h1():
+            return render_h1(context)
+        __M_writer = context.writer()
+        __M_writer('\r\n\t<h1 class="page-header">Products</h1>\r\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 """
 __M_BEGIN_METADATA
-{"source_encoding": "ascii", "uri": "product.html", "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/product.html", "line_map": {"65": 7, "107": 40, "73": 7, "74": 9, "75": 10, "76": 11, "77": 11, "78": 12, "79": 12, "80": 14, "81": 14, "82": 15, "83": 16, "84": 16, "85": 16, "86": 18, "87": 20, "88": 21, "89": 23, "90": 24, "27": 0, "92": 27, "93": 28, "94": 28, "95": 28, "96": 28, "97": 28, "98": 30, "91": 26, "100": 34, "101": 35, "38": 1, "103": 36, "104": 36, "105": 37, "106": 38, "43": 5, "108": 44, "99": 33, "114": 108, "53": 3, "59": 3, "102": 36}}
+{"line_map": {"64": 11, "65": 11, "66": 12, "67": 12, "68": 14, "69": 14, "70": 15, "71": 16, "72": 16, "73": 16, "74": 18, "75": 20, "76": 21, "77": 23, "78": 24, "79": 26, "80": 27, "81": 28, "82": 28, "83": 28, "84": 28, "85": 28, "86": 30, "87": 33, "88": 34, "89": 35, "90": 36, "27": 0, "92": 36, "93": 37, "94": 38, "95": 40, "96": 44, "91": 36, "102": 3, "38": 1, "43": 5, "108": 3, "114": 108, "53": 7, "61": 7, "62": 9, "63": 10}, "source_encoding": "ascii", "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/product.html", "uri": "product.html"}
 __M_END_METADATA
 """

@@ -4,7 +4,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1425535369.722619
+_modified_time = 1428686861.993787
 _enable_loop = True
 _template_filename = 'C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/base_ajax.htm'
 _template_uri = 'base_ajax.htm'
@@ -59,6 +59,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "base_ajax.htm", "line_map": {"33": 7, "34": 10, "35": 10, "48": 13, "40": 15, "41": 18, "42": 18, "60": 54, "16": 6, "18": 0, "54": 13, "27": 4, "28": 6, "29": 7}, "source_encoding": "ascii", "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/base_ajax.htm"}
+{"line_map": {"33": 7, "34": 10, "35": 10, "48": 13, "40": 15, "41": 18, "42": 18, "60": 54, "16": 6, "18": 0, "54": 13, "27": 4, "28": 6, "29": 7}, "source_encoding": "ascii", "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/base_ajax.htm", "uri": "base_ajax.htm"}
 __M_END_METADATA
 """

@@ -24,6 +24,7 @@ def process_request(request):
 
 
 @view_function
+@permission_required('homepage.add_user')
 def edit(request):
     params = {}
 
@@ -85,6 +86,7 @@ class ItemEditForm(forms.Form):
 
 
 @view_function
+@permission_required('homepage.add_user')
 def create(request):
 
     params = {}
@@ -112,6 +114,7 @@ def create(request):
 
 
 @view_function
+@permission_required('homepage.add_user')
 def delete(request):
     try:
         item = hmod.Item.objects.get(entity_ptr_id=request.urlparams[0])
@@ -137,6 +140,7 @@ def order(request):
 
 
 @view_function
+@permission_required('homepage.add_user')
 def late(request):
     now = datetime.datetime.now()
     thirty = now - datetime.timedelta(days=30)

@@ -12,13 +12,13 @@
 	%if len(items) > 0:
 		<h4>Items</h4>
 		<table id="items-table" class="table">
-			<tr>
+			<tr class="no-click">
 				<th data-name="itemSpecifications__name">Name</th>
 				<th data-name="itemSpecifications__description">Description</th>
 				<th data-name="itemSpecifications__price">Price</th>
 			</tr>
 			%for item in items:
-				<tr>
+				<tr data-link="/homepage/product.view/${ item.entity_ptr_id }/">
 					<td><a href="/homepage/product.view/${ item.entity_ptr_id }/">${ item.itemSpecifications.name }</a></td>
 					<td>${ item.itemSpecifications.description }</td>
 					<td>$${ item.itemSpecifications.price }</td>

@@ -4,7 +4,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1428650361.948336
+_modified_time = 1428686866.639757
 _enable_loop = True
 _template_filename = 'C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/cart.html'
 _template_uri = 'cart.html'
@@ -29,9 +29,9 @@ def render_body(context,**pageargs):
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         items = context.get('items', UNDEFINED)
+        len = context.get('len', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        len = context.get('len', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -47,9 +47,9 @@ def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         items = context.get('items', UNDEFINED)
+        len = context.get('len', UNDEFINED)
         def content():
             return render_content(context)
-        len = context.get('len', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if len(items) > 0:
@@ -97,6 +97,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "ascii", "uri": "cart.html", "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/cart.html", "line_map": {"65": 12, "66": 14, "67": 15, "68": 16, "69": 16, "70": 17, "71": 17, "72": 18, "73": 18, "74": 20, "75": 20, "76": 21, "77": 21, "78": 24, "79": 24, "80": 25, "81": 25, "82": 31, "84": 31, "85": 32, "87": 32, "88": 34, "89": 34, "90": 38, "27": 0, "92": 39, "98": 92, "91": 39, "36": 1, "46": 3, "54": 3, "55": 5, "56": 6, "57": 7, "58": 8, "59": 10, "60": 11, "62": 11, "63": 12}}
+{"line_map": {"65": 12, "66": 14, "67": 15, "68": 16, "69": 16, "70": 17, "71": 17, "72": 18, "73": 18, "74": 20, "75": 20, "76": 21, "77": 21, "78": 24, "79": 24, "80": 25, "81": 25, "82": 31, "84": 31, "85": 32, "87": 32, "88": 34, "89": 34, "90": 38, "27": 0, "92": 39, "98": 92, "91": 39, "36": 1, "46": 3, "54": 3, "55": 5, "56": 6, "57": 7, "58": 8, "59": 10, "60": 11, "62": 11, "63": 12}, "source_encoding": "ascii", "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/cart.html", "uri": "cart.html"}
 __M_END_METADATA
 """

@@ -4,7 +4,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1428467198.421482
+_modified_time = 1428687111.355568
 _enable_loop = True
 _template_filename = 'C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/account_create.html'
 _template_uri = 'account_create.html'
@@ -28,11 +28,11 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        form = context.get('form', UNDEFINED)
         def h1():
             return render_h1(context._locals(__M_locals))
         def center():
             return render_center(context._locals(__M_locals))
-        form = context.get('form', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'h1'):
@@ -64,9 +64,9 @@ def render_h1(context,**pageargs):
 def render_center(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        form = context.get('form', UNDEFINED)
         def center():
             return render_center(context)
-        form = context.get('form', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\t<form id="new-user-form" method="POST" action="/homepage/account.create/">\r\n\t\t<table>\r\n\t\t\t')
         __M_writer(str( form ))
@@ -78,6 +78,6 @@ def render_center(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "account_create.html", "source_encoding": "ascii", "line_map": {"64": 7, "52": 3, "37": 1, "71": 7, "72": 10, "73": 10, "58": 3, "27": 0, "42": 5, "79": 73}, "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/account_create.html"}
+{"source_encoding": "ascii", "uri": "account_create.html", "line_map": {"64": 7, "52": 3, "37": 1, "71": 7, "72": 10, "73": 10, "58": 3, "27": 0, "42": 5, "79": 73}, "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/account_create.html"}
 __M_END_METADATA
 """

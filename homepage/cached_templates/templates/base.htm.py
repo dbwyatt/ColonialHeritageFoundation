@@ -4,13 +4,13 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1428654079.787418
+_modified_time = 1428686804.923259
 _enable_loop = True
 _template_filename = 'C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/base.htm'
 _template_uri = 'base.htm'
 _source_encoding = 'ascii'
 import os, os.path, re
-_exports = ['left', 'footer', 'title', 'jumbotron', 'h1', 'center', 'header']
+_exports = ['left', 'h1', 'jumbotron', 'center', 'title', 'header', 'footer']
 
 
 from django_mako_plus.controller import static_files 
@@ -19,25 +19,25 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def left():
-            return render_left(context._locals(__M_locals))
-        def footer():
-            return render_footer(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
-        request = context.get('request', UNDEFINED)
         user = context.get('user', UNDEFINED)
         def h1():
             return render_h1(context._locals(__M_locals))
+        def footer():
+            return render_footer(context._locals(__M_locals))
+        int = context.get('int', UNDEFINED)
+        def jumbotron():
+            return render_jumbotron(context._locals(__M_locals))
+        def center():
+            return render_center(context._locals(__M_locals))
         def header():
             return render_header(context._locals(__M_locals))
+        self = context.get('self', UNDEFINED)
+        request = context.get('request', UNDEFINED)
+        def left():
+            return render_left(context._locals(__M_locals))
         def title():
             return render_title(context._locals(__M_locals))
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def jumbotron():
-            return render_jumbotron(context._locals(__M_locals))
-        int = context.get('int', UNDEFINED)
-        def center():
-            return render_center(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\r\n')
         __M_writer('\r\n')
@@ -107,25 +107,13 @@ def render_left(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_footer(context,**pageargs):
+def render_h1(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def footer():
-            return render_footer(context)
+        def h1():
+            return render_h1(context)
         __M_writer = context.writer()
-        __M_writer('\r\n\t\t\t<ul>\r\n\t\t\t\t<li class="footer-list">\r\n\t\t\t\t\t<span class="footer-item-header footer-item">Company</span>\r\n\t\t\t\t\t<a class="footer-item">About Us</a>\r\n\t\t\t\t\t<a class="footer-item">Contact Us</a>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t\t<span class="copyright pull-right">Copyright &copy; Colonial Heritage Foundation, Inc.</span>\r\n\t\t')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_title(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def title():
-            return render_title(context)
-        __M_writer = context.writer()
-        __M_writer('\r\n\t\t\tColonial Heritage Foundation\r\n\t\t')
+        __M_writer('<h1 class="page-header">Colonial Heritage Foundation</h1>')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -137,18 +125,6 @@ def render_jumbotron(context,**pageargs):
         def jumbotron():
             return render_jumbotron(context)
         __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_h1(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def h1():
-            return render_h1(context)
-        __M_writer = context.writer()
-        __M_writer('<h1 class="page-header">Colonial Heritage Foundation</h1>')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -166,16 +142,28 @@ def render_center(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_title(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def title():
+            return render_title(context)
+        __M_writer = context.writer()
+        __M_writer('\r\n\t\t\tColonial Heritage Foundation\r\n\t\t')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 def render_header(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        user = context.get('user', UNDEFINED)
         request = context.get('request', UNDEFINED)
-        int = context.get('int', UNDEFINED)
         def header():
             return render_header(context)
-        user = context.get('user', UNDEFINED)
+        int = context.get('int', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\r\n\t\t\t<nav class="navbar navbar-default">\r\n\t\t\t  <div class="container-fluid">\r\n\t\t\t\t<!-- Brand and toggle get grouped for better mobile display -->\r\n\t\t\t\t<div class="navbar-header">\r\n\t\t\t\t  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">\r\n\t\t\t\t\t<span class="sr-only">Toggle navigation</span>\r\n\t\t\t\t\t<span class="icon-bar"></span>\r\n\t\t\t\t\t<span class="icon-bar"></span>\r\n\t\t\t\t\t<span class="icon-bar"></span>\r\n\t\t\t\t  </button>\r\n\t\t\t\t  <a class="navbar-brand" href="/homepage">\r\n\t\t\t\t\t  <div class="image">\r\n\t\t\t\t\t\t<img src="/static/homepage/media/headerimg.png">\r\n\t\t\t\t\t  </div>\r\n\t\t\t\t\t  <span>Colonial Heritage Foundation</span>\r\n\t\t\t\t  </a>\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<!-- Collect the nav links, forms, and other content for toggling -->\r\n\t\t\t\t<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\r\n\t\t\t\t  <ul class="nav navbar-nav navbar-left">\r\n\t\t\t\t\t<li><a href="/homepage/product/">Product</a></li>\r\n\t\t\t\t\t<li><a href="/homepage/view_events/">Events</a></li>\r\n')
+        __M_writer('\r\n\t\t\t<nav class="navbar navbar-default">\r\n\t\t\t  <div class="container-fluid">\r\n\t\t\t\t<!-- Brand and toggle get grouped for better mobile display -->\r\n\t\t\t\t<div class="navbar-header">\r\n\t\t\t\t  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">\r\n\t\t\t\t\t<span class="sr-only">Toggle navigation</span>\r\n\t\t\t\t\t<span class="icon-bar"></span>\r\n\t\t\t\t\t<span class="icon-bar"></span>\r\n\t\t\t\t\t<span class="icon-bar"></span>\r\n\t\t\t\t  </button>\r\n\t\t\t\t  <a class="navbar-brand" href="/homepage">\r\n\t\t\t\t\t  <div class="image">\r\n\t\t\t\t\t\t<img src="/static/homepage/media/headerimg.png">\r\n\t\t\t\t\t  </div>\r\n\t\t\t\t\t  <span>Colonial Heritage Foundation</span>\r\n\t\t\t\t  </a>\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<!-- Collect the nav links, forms, and other content for toggling -->\r\n\t\t\t\t<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\r\n\t\t\t\t  <ul class="nav navbar-nav navbar-left">\r\n\t\t\t\t\t<li><a href="/homepage/product/">Product</a></li>\r\n\t\t\t\t\t<li><a href="/homepage/view_events/">Events</a></li>\r\n\t\t\t\t\t<li><a href="/homepage/view_rentable/">Rentals</a></li>\r\n')
         if user.is_authenticated() and user.is_superuser:
             __M_writer('\t\t\t\t\t<li class="dropdown">\r\n\t\t\t\t\t  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin<span class="caret"></span></a>\r\n\t\t\t\t\t  <ul class="dropdown-menu" role="menu">\r\n\t\t\t\t\t    <li><a href="/homepage/items/">Items</a></li>\r\n\t\t\t\t\t    <li><a href="/homepage/events/">Events</a></li>\r\n\t\t\t\t\t\t  <li><a href="/homepage/rentableitems/">Rentable Items</a></li>\r\n\t\t\t\t\t\t  <li><a href="/homepage/users/">Users</a></li>\r\n\t\t\t\t\t\t  <li class="divider"></li>\r\n\t\t\t\t\t\t<li><a href="/homepage/rentableitems.late/">Late Rentals</a></li>\r\n\t\t\t\t\t\t<li><a href="/homepage/rentableitems_return/">Returns</a></li>\r\n\t\t\t\t\t  </ul>\r\n\t\t\t\t\t</li>\r\n')
         __M_writer('\t\t\t\t  </ul>\r\n\r\n\t\t\t\t  <ul class="nav navbar-nav navbar-right">\r\n')
@@ -203,8 +191,20 @@ def render_header(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_footer(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def footer():
+            return render_footer(context)
+        __M_writer = context.writer()
+        __M_writer('\r\n\t\t\t<ul>\r\n\t\t\t\t<li class="footer-list">\r\n\t\t\t\t\t<span class="footer-item-header footer-item">Company</span>\r\n\t\t\t\t\t<a class="footer-item">About Us</a>\r\n\t\t\t\t\t<a class="footer-item">Contact Us</a>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t\t<span class="copyright pull-right">Copyright &copy; Colonial Heritage Foundation, Inc.</span>\r\n\t\t')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 """
 __M_BEGIN_METADATA
-{"filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/base.htm", "line_map": {"128": 15, "192": 86, "134": 171, "16": 4, "145": 179, "18": 0, "151": 179, "157": 180, "197": 97, "163": 180, "169": 36, "42": 2, "43": 4, "44": 5, "48": 5, "200": 123, "178": 36, "179": 60, "180": 61, "53": 17, "182": 77, "183": 78, "184": 83, "57": 30, "186": 83, "187": 84, "188": 85, "189": 86, "190": 86, "181": 74, "64": 168, "193": 89, "194": 89, "195": 89, "196": 97, "69": 171, "198": 106, "199": 107, "54": 21, "74": 175, "55": 23, "206": 200, "79": 179, "56": 23, "84": 184, "89": 197, "90": 202, "91": 202, "92": 202, "58": 30, "98": 174, "59": 30, "104": 174, "110": 188, "116": 188, "122": 15}, "source_encoding": "ascii", "uri": "base.htm"}
+{"line_map": {"43": 4, "133": 181, "44": 5, "139": 181, "16": 4, "145": 15, "18": 0, "151": 15, "157": 36, "48": 5, "166": 36, "167": 61, "168": 62, "169": 75, "42": 2, "171": 79, "172": 84, "174": 84, "175": 85, "176": 86, "177": 87, "178": 87, "180": 87, "53": 17, "54": 21, "55": 23, "56": 23, "57": 30, "58": 30, "59": 30, "188": 124, "181": 90, "64": 169, "194": 189, "69": 172, "200": 189, "74": 176, "183": 90, "206": 200, "79": 180, "184": 98, "84": 185, "185": 98, "89": 198, "90": 203, "91": 203, "92": 203, "186": 107, "182": 90, "98": 175, "187": 108, "104": 175, "110": 180, "116": 180, "122": 172, "170": 78}, "source_encoding": "ascii", "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/base.htm", "uri": "base.htm"}
 __M_END_METADATA
 """

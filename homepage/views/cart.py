@@ -88,6 +88,30 @@ def getcart(request):
 
 
 @view_function
+def rentupdatecart(request):
+    if request.user.is_authenticated():
+        item = {}
+        item['id'] = request.urlparams[0]
+        item['quantity'] = request.urlparams[1]
+
+        if 'shopping_cart' not in request.session:
+            request.session['shopping_cart'] = {}
+
+        # If item.id is already in shopping_cart, increment it by qty added, otherwise, set item.id as qty added
+        if item['id'] in request.session['shopping_cart']:
+            return HttpResponse(False)
+        else:
+            request.session['shopping_cart'][item['id']] = int(item['quantity'])
+
+        request.session.modified = True
+
+        return HttpResponse("Updated")
+
+    else:
+        return HttpResponse("Login")
+
+
+@view_function
 def delete(request):
 
     del request.session['shopping_cart'][str(request.urlparams[0])]

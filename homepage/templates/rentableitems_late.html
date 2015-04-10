@@ -13,12 +13,14 @@
 			<th>Item Name</th>
 			<th>Times Rented</th>
 			<th>Due Date</th>
+			<th>Renter</th>
 		</tr>
 		%for x in itemsnow:
 			<tr>
 				<td>${ x.rentalItem.wardrobeitem_ptr.serializeditem_ptr.item_ptr.itemSpecifications.name }</td>
 				<td>${ x.rentalItem.timesRented }</td>
 				<td>${ datetime.datetime.strftime(x.dueDate, '%A, %B %d, %Y') } - ${ datetime.datetime.strftime(x.dueDate, '%I:%M %p') }</td>
+				<td>${ x.lineitem_ptr.transaction.placedBy.first_name } ${ x.lineitem_ptr.transaction.placedBy.last_name }</td>
 			</tr>
 		%endfor
 	</table>
@@ -28,12 +30,14 @@
 			<th>Item Name</th>
 			<th>Times Rented</th>
 			<th>Due Date</th>
+			<th>Renter</th>
 		</tr>
 		%for x in items30:
 			<tr>
 				<td>${ x.rentalItem.wardrobeitem_ptr.serializeditem_ptr.item_ptr.itemSpecifications.name }</td>
 				<td>${ x.rentalItem.timesRented }</td>
 				<td>${ datetime.datetime.strftime(x.dueDate, '%A, %B %d, %Y') } - ${ datetime.datetime.strftime(x.dueDate, '%I:%M %p') }</td>
+				<td>${ x.lineitem_ptr.transaction.placedBy.first_name } ${ x.lineitem_ptr.transaction.placedBy.last_name }</td>
 			</tr>
 		%endfor
 	</table>
@@ -43,12 +47,14 @@
 			<th>Item Name</th>
 			<th>Times Rented</th>
 			<th>Due Date</th>
+			<th>Renter</th>
 		</tr>
 		%for x in items60:
 			<tr>
 				<td>${ x.rentalItem.wardrobeitem_ptr.serializeditem_ptr.item_ptr.itemSpecifications.name }</td>
 				<td>${ x.rentalItem.timesRented }</td>
 				<td>${ datetime.datetime.strftime(x.dueDate, '%A, %B %d, %Y') } - ${ datetime.datetime.strftime(x.dueDate, '%I:%M %p') }</td>
+				<td>${ x.lineitem_ptr.transaction.placedBy.first_name } ${ x.lineitem_ptr.transaction.placedBy.last_name }</td>
 			</tr>
 		%endfor
 	</table>
@@ -58,12 +64,14 @@
 			<th>Item Name</th>
 			<th>Times Rented</th>
 			<th>Due Date</th>
+			<th>Renter</th>
 		</tr>
 		%for x in items90:
 			<tr>
 				<td>${ x.rentalItem.wardrobeitem_ptr.serializeditem_ptr.item_ptr.itemSpecifications.name }</td>
 				<td>${ x.rentalItem.timesRented }</td>
 				<td>${ datetime.datetime.strftime(x.dueDate, '%A, %B %d, %Y') } - ${ datetime.datetime.strftime(x.dueDate, '%I:%M %p') }</td>
+				<td>${ x.lineitem_ptr.transaction.placedBy.first_name } ${ x.lineitem_ptr.transaction.placedBy.last_name }</td>
 			</tr>
 		%endfor
 	</table>

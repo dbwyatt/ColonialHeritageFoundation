@@ -44,11 +44,18 @@ $(function() {
         }); //ajax
     }); //click
 
-    $('#search-button').click(function() {
+    $('#search-button').on('click keyup', function(evt) {
         var search = $('#search-box').val();
-        console.log(search);
         $('#search-form').attr('action', '/homepage/search/' + search);
         $('#search-form').submit();
     }); //search click
+
+    $('#search-box').on('keyup', function(evt) {
+        if (evt.keyCode == 13) {
+            var search = $('#search-box').val();
+            $('#search-form').attr('action', '/homepage/search/' + search);
+            $('#search-form').submit();
+        }
+    })
 
 }); //ready

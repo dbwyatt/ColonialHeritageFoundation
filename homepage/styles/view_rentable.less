@@ -1,0 +1,80 @@
+.item-container {
+	display: inline-block;
+	min-width: 33%;
+//	min-height: 400px;
+	position: relative;
+	margin: auto;
+	margin-bottom: 20px;
+
+	.item {
+		display: block;
+		padding: 10px;
+		position: relative;
+		width: 300px;
+		margin: 0 auto;
+		box-shadow: 0px 0px 5px 0px #808080;
+//		box-shadow: 0px 0px 0px 1px lightgrey;
+
+		.photograph {
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			height: 270px;
+		}
+
+		.info {
+//			height: 15%;
+			width: 100%;
+			clear: both;
+			overflow: hidden;
+			padding: 20px 10px;
+			font-size: 17px;
+
+			.name {
+				font-weight: bold;
+				float: left;
+			}
+			.price {
+				float: right;
+			}
+		}
+
+		.purchase {
+			clear: both;
+			overflow: hidden;
+			display: block;
+			padding: 0 5px;
+
+			.btn {
+				width: 50%;
+				display: inline-block;
+				//			margin: auto;
+				//			left: 0;
+				right: 0;
+				transition: all .5s linear;
+				float: right;
+			}
+
+			.label {
+				color: initial;
+				vertical-align: middle;
+			}
+
+			select {
+				height: 35px;
+				width: 50px;
+				display: inline-block;
+				position: relative;
+				vertical-align: middle;
+			}
+		}
+	}
+}
+
+.modal {
+
+	.item-container {
+		width: 300px;
+		display: block;
+	}
+}

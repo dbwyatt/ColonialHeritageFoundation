@@ -4,7 +4,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1428464562.877548
+_modified_time = 1428686994.372629
 _enable_loop = True
 _template_filename = 'C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/checkout.html'
 _template_uri = 'checkout.html'
@@ -28,9 +28,9 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        form = context.get('form', UNDEFINED)
         def h1():
             return render_h1(context._locals(__M_locals))
-        form = context.get('form', UNDEFINED)
         def center():
             return render_center(context._locals(__M_locals))
         total = context.get('total', UNDEFINED)
@@ -82,6 +82,6 @@ def render_center(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "checkout.html", "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/checkout.html", "line_map": {"65": 7, "27": 0, "38": 1, "73": 7, "74": 10, "75": 10, "76": 13, "77": 13, "43": 5, "83": 77, "53": 3, "59": 3}, "source_encoding": "ascii"}
+{"source_encoding": "ascii", "uri": "checkout.html", "line_map": {"65": 7, "27": 0, "38": 1, "73": 7, "74": 10, "75": 10, "76": 13, "77": 13, "43": 5, "83": 77, "53": 3, "59": 3}, "filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/checkout.html"}
 __M_END_METADATA
 """
