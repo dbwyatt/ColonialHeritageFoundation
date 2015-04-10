@@ -113,6 +113,11 @@ def create(request):
         'confirm': '',
         'email': '',
         'phone': '',
+        'address1': '',
+        'address2': '',
+        'city': '',
+        'state': '',
+        'zip': '',
         'securityQuestion': '',
         'securityAnswer': ''
     })
@@ -126,7 +131,15 @@ def create(request):
             user.username = form.cleaned_data['username']
             user.set_password(form.cleaned_data['password'])
             user.email = form.cleaned_data['email']
-            user.address = hmod.Address.objects.all()[0]
+            address = hmod.Address()
+            address.address1 = form.cleaned_data['address1']
+            address.address2 = form.cleaned_data['address2']
+            address.city = form.cleaned_data['city']
+            address.state = form.cleaned_data['state']
+            address.zip = form.cleaned_data['zip']
+            address.email = 'fill@fill.com'
+            address.save()
+            user.address = address
             user.phone = form.cleaned_data['phone']
             user.securityQuestion = form.cleaned_data['securityQuestion']
             user.securityAnswer = form.cleaned_data['securityAnswer']
@@ -152,6 +165,76 @@ class UserCreateForm(forms.Form):
     confirm = forms.CharField(label='Confirm Password', required=False, widget=forms.PasswordInput)
     email = forms.EmailField(label='Email', required=True)
     phone = forms.CharField(label='Phone')
+    address1 = forms.CharField(label='Address 1')
+    address2 = forms.CharField(label='Address 2', required=False)
+    city = forms.CharField(label='City')
+    state = forms.ChoiceField(
+        label='State',
+        choices=[
+            (x, y) for x, y in
+                (
+                    ("AL", "Alabama"),
+                    ("AK", "Alaska"),
+                    ("AS", "American Samoa"),
+                    ("AZ", "Arizona"),
+                    ("AR", "Arkansas"),
+                    ("CA", "California"),
+                    ("CO", "Colorado"),
+                    ("CT", "Connecticut"),
+                    ("DE", "Delaware"),
+                    ("DC", "District Of Columbia"),
+                    ("FM", "Federated States Of Micronesia"),
+                    ("FL", "Florida"),
+                    ("GA", "Georgia"),
+                    ("GU", "Guam"),
+                    ("HI", "Hawaii"),
+                    ("ID", "Idaho"),
+                    ("IL", "Illinois"),
+                    ("IN", "Indiana"),
+                    ("IA", "Iowa"),
+                    ("KS", "Kansas"),
+                    ("KY", "Kentucky"),
+                    ("LA", "Louisiana"),
+                    ("ME", "Maine"),
+                    ("MH", "Marshall Islands"),
+                    ("MD", "Maryland"),
+                    ("MA", "Massachusetts"),
+                    ("MI", "Michigan"),
+                    ("MN", "Minnesota"),
+                    ("MS", "Mississippi"),
+                    ("MO", "Missouri"),
+                    ("MT", "Montana"),
+                    ("NE", "Nebraska"),
+                    ("NV", "Nevada"),
+                    ("NH", "New Hampshire"),
+                    ("NJ", "New Jersey"),
+                    ("NM", "New Mexico"),
+                    ("NY", "New York"),
+                    ("NC", "North Carolina"),
+                    ("ND", "North Dakota"),
+                    ("MP", "Northern Mariana Islands"),
+                    ("OH", "Ohio"),
+                    ("OK", "Oklahoma"),
+                    ("OR", "Oregon"),
+                    ("PW", "Palau"),
+                    ("PA", "Pennsylvania"),
+                    ("PR", "Puerto Rico"),
+                    ("RI", "Rhode Island"),
+                    ("SC", "South Carolina"),
+                    ("SD", "South Dakota"),
+                    ("TN", "Tennessee"),
+                    ("TX", "Texas"),
+                    ("UT", "Utah"),
+                    ("VT", "Vermont"),
+                    ("VI", "Virgin Islands"),
+                    ("VA", "Virginia"),
+                    ("WA", "Washington"),
+                    ("WV", "West Virginia"),
+                    ("WI", "Wisconsin"),
+                    ("WY", "Wyoming")
+                )]
+    )
+    zip = forms.CharField(label='Zip')
     securityQuestion = forms.ChoiceField(label='Security Question', choices=[(x, x) for x in ["Where were you born?", "What is your mother's maiden name?", "What is the name of your first pet?", "In which city did you last live?"]])
     securityAnswer = forms.CharField(label='Security Answer')
 
