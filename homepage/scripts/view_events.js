@@ -3,7 +3,7 @@
  */
 $(function() {
     $(document).on("click", "#events-table th:not(:last-child)", function () {
-        window.location = "/homepage/items.order/" + $(this).data('name') + "/";
+        window.location = "/homepage/view_events.order/" + $(this).data('name') + "/";
     });
 
     $(document).on("mouseover", "#items-table th:not(:last-child)", function () {

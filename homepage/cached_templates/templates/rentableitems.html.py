@@ -4,13 +4,13 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1428212755.380668
+_modified_time = 1428621750.570733
 _enable_loop = True
 _template_filename = 'C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/rentableitems.html'
 _template_uri = 'rentableitems.html'
 _source_encoding = 'ascii'
 import os, os.path, re
-_exports = ['center', 'h1']
+_exports = ['h1', 'center']
 
 
 def _mako_get_namespace(context, name):
@@ -28,10 +28,10 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def center():
-            return render_center(context._locals(__M_locals))
         def h1():
             return render_h1(context._locals(__M_locals))
+        def center():
+            return render_center(context._locals(__M_locals))
         items = context.get('items', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
@@ -49,6 +49,18 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_h1(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def h1():
+            return render_h1(context)
+        __M_writer = context.writer()
+        __M_writer('\r\n\t<h1 class="page-header">Rentable Items</h1>\r\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 def render_center(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
@@ -56,7 +68,7 @@ def render_center(context,**pageargs):
             return render_center(context)
         items = context.get('items', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\r\n    <a href="/homepage/rentableitems.create/" class="btn btn-success">Add Item</a>\r\n    <table id="items-table" class="table table-striped table-bordered">\r\n        <tr>\r\n            <th data-name="name">Name</th>\r\n            <th data-name="description">Description</th>\r\n            <th>Actions</th>\r\n        </tr>\r\n')
+        __M_writer('\r\n    <a href="/homepage/rentableitems.create/" class="btn btn-success">Add Rental Item</a>\r\n    <table id="items-table" class="table table-striped table-bordered">\r\n        <tr>\r\n            <th data-name="name">Name</th>\r\n            <th data-name="description">Description</th>\r\n            <th>Actions</th>\r\n        </tr>\r\n')
         for item in items:
             __M_writer('            <tr data-id="')
             __M_writer(str( item.wardrobeitem_ptr_id ))
@@ -75,20 +87,8 @@ def render_center(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_h1(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def h1():
-            return render_h1(context)
-        __M_writer = context.writer()
-        __M_writer('\r\n\t<h1>Rentals</h1>\r\n')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 """
 __M_BEGIN_METADATA
-{"filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/rentableitems.html", "uri": "rentableitems.html", "line_map": {"64": 17, "65": 17, "66": 18, "59": 7, "68": 19, "37": 1, "70": 19, "71": 19, "72": 22, "42": 5, "78": 3, "67": 18, "52": 7, "69": 19, "84": 3, "90": 84, "27": 0, "60": 15, "61": 16, "62": 16, "63": 16}, "source_encoding": "ascii"}
+{"filename": "C:\\Users\\Daniel\\Documents\\PycharmProjects\\ColonialHeritageFoundation\\homepage\\templates/rentableitems.html", "source_encoding": "ascii", "uri": "rentableitems.html", "line_map": {"64": 7, "90": 84, "37": 1, "71": 7, "72": 15, "73": 16, "74": 16, "75": 16, "76": 17, "77": 17, "78": 18, "79": 18, "80": 19, "81": 19, "82": 19, "83": 19, "52": 3, "84": 22, "58": 3, "27": 0, "42": 5}}
 __M_END_METADATA
 """

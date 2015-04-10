@@ -44,4 +44,11 @@ $(function() {
         }); //ajax
     }); //click
 
+    $('#search-button').click(function() {
+        var search = $('#search-box').val();
+        console.log(search);
+        $('#search-form').attr('action', '/homepage/search/' + search);
+        $('#search-form').submit();
+    }); //search click
+
 }); //ready

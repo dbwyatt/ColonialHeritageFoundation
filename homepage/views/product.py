@@ -18,3 +18,12 @@ def process_request(request):
     items['items'] = hmod.Item.objects.all()
 
     return templater.render_to_response(request, 'product.html', items)
+
+
+@view_function
+def view(request):
+    items = {}
+
+    items['items'] = hmod.Item.objects.all().filter(entity_ptr_id=request.urlparams[0])
+
+    return templater.render_to_response(request, 'view_product.html', items)

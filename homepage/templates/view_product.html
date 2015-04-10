@@ -1,0 +1,46 @@
+<%inherit file="base.htm" />
+
+<%block name="h1">
+	<h1 class="page-header">Product Details</h1>
+</%block>
+
+<%block name="center">
+	%for item in items:
+		<h3>${ item.itemSpecifications.name }</h3>  <!-- change this to name! -->
+		<img src="/static/homepage/media/items/${ item.itemSpecifications.photograph.imagePath }" alt="Smiley face">
+		<div class="productPane">
+			Price: $${ item.itemSpecifications.price }<br>
+			${ item.quantityOnHand } Available<br><br>
+
+			<div class="purchase">
+				%if item.forSale != False:
+					<label class="label" style="color:black;">Qty: </label>
+					<select class='quantity'
+					%if item.quantityOnHand == 0 or item.forSale == False:
+							disabled
+					%endif
+					>
+						%for x in range(item.quantityOnHand):
+							<option value="${x + 1}">${x + 1}</option>
+						%endfor
+
+					</select>
+				%endif
+				%if item.forSale == False:
+					<button class="btn btn-default" disabled>Item not for Sale</button>
+				%elif item.quantityOnHand > 0:
+					<button class="buy btn btn-warning" data-id="${ item.entity_ptr_id }">Add to cart</button>
+				%else:
+					<button class="btn btn-danger" disabled>Out of stock</button>
+				%endif
+			</div>
+
+		</div>
+
+		<div class="descriptionPane">
+		   Category: ${ item.itemSpecifications.category }<br>
+			Made By: ${ item.itemSpecifications.manufacturer }<br>
+			${ item.itemSpecifications.description }
+		</div>
+	%endfor
+</%block>

@@ -130,37 +130,93 @@ print('Useres Created')
 
 # ########### Fill Models ####################
 
+address = hmod.Address()
+address.address1 = '600 S State St.'
+address.address2 = 'TNRB'
+address.city = 'Orem'
+address.state = 'UT'
+address.zip = '84058'
+address.email = 'address'
+address.save()
 
 event = hmod.Event()
-event.name = 'The Event!'
-event.description = 'nothing is happening at the event, sorry'
-event.startDate = '2015-03-07 12:01'
-event.endDate = '2015-03-07 12:02'
+event.name = 'Heritage Festival'
+event.description = 'The big heritage festival. Where tons of people dress up and do colonial stuff'
+event.startDate = '2015-07-03 12:01'
+event.endDate = '2015-07-05 12:02'
 event.mapFileName = 'a map here?'
-event.venueName = 'Tanner Building'
+event.venueName = 'Scera Park'
 event.address = address
 event.save()
 
 
 area = hmod.Area()
-area.name = 'IS core'
-area.description = 'where good men suffer'
+area.name = 'Bakery'
+area.description = 'An old fasioned brick oven, bread is always for sale'
 area.placeNumber = '1'
 area.coordinatingAgent = user
 area.supervisingAgent = user
 area.event = event
 area.save()
 
+area = hmod.Area()
+area.name = 'Black Smith'
+area.description = 'Hourly demonstrations of horseshoe making.'
+area.placeNumber = '2'
+area.coordinatingAgent = user
+area.supervisingAgent = user
+area.event = event
+area.save()
+
+area = hmod.Area()
+area.name = 'Basketry'
+area.description = 'Basking making activities for all ages and fancy baskets for sale'
+area.placeNumber = '3'
+area.coordinatingAgent = user
+area.supervisingAgent = user
+area.event = event
+area.save()
+
+
+photograph = hmod.Photograph()
+photograph.imagePath = 'smallbasket.gif'
+photograph.save()
 
 areaItem = hmod.AreaSaleItem()
-areaItem.name = 'area sale item...'
-areaItem.description = 'description of an area sale item'
-areaItem.lowPrice = 1.00
-areaItem.highPrice = 1.01
+areaItem.name = 'Small Baskets'
+areaItem.description = 'small handmade baskets of varying color'
+areaItem.lowPrice = 5.00
+areaItem.highPrice = 10.00
 areaItem.area = area
 areaItem.photograph = photograph
 areaItem.save()
 
+
+photograph = hmod.Photograph()
+photograph.imagePath = 'largebasket.jpg'
+photograph.save()
+
+areaItem = hmod.AreaSaleItem()
+areaItem.name = 'Large Baskets'
+areaItem.description = 'large handmade baskets of varying color'
+areaItem.lowPrice = 10.00
+areaItem.highPrice = 30.00
+areaItem.area = area
+areaItem.photograph = photograph
+areaItem.save()
+
+photograph = hmod.Photograph()
+photograph.imagePath = 'otherbasket.jpg'
+photograph.save()
+
+areaItem = hmod.AreaSaleItem()
+areaItem.name = 'Make yourself Baskets'
+areaItem.description = 'make your own basket'
+areaItem.lowPrice = 5.00
+areaItem.highPrice = 5.00
+areaItem.area = area
+areaItem.photograph = photograph
+areaItem.save()
 
 figure = hmod.HistoricalFigure()
 figure.name = 'Dr. Albrect'
@@ -186,17 +242,62 @@ cat = hmod.Category()
 cat.description = 'category 1'
 cat.save()
 
+photograph = hmod.Photograph()
+photograph.imagePath = 'shoes.jpg'
+photograph.save()
 
 itemSpec = hmod.ItemSpecifications()
-itemSpec.name = 'item spec name...'
-itemSpec.description = 'item spec description...'
+itemSpec.name = 'Black Shoes'
+itemSpec.description = 'Normal Black Shoes'
 itemSpec.price = '10.35'
-itemSpec.manufacturer = 'item spec manufacturer'
+itemSpec.manufacturer = 'shoes inc'
 itemSpec.user = user
 itemSpec.photograph = photograph
 itemSpec.category = cat
 itemSpec.save()
 
+item = hmod.Item()
+item.forSale = 'True'
+item.quantityOnHand = '4'
+item.cost = '4.44'
+item.itemSpecifications = itemSpec
+item.save()
+
+photograph = hmod.Photograph()
+photograph.imagePath = 'shoes2.jpg'
+photograph.save()
+
+itemSpec = hmod.ItemSpecifications()
+itemSpec.name = 'Black Shoes /W Buckle'
+itemSpec.description = 'Shoes with a fancy buckle'
+itemSpec.price = '20.35'
+itemSpec.manufacturer = 'fancy shoe inc'
+itemSpec.user = user
+itemSpec.photograph = photograph
+itemSpec.category = cat
+itemSpec.save()
+
+item = hmod.Item()
+item.forSale = 'True'
+item.quantityOnHand = '2'
+item.cost = '20.44'
+item.itemSpecifications = itemSpec
+item.save()
+
+
+photograph = hmod.Photograph()
+photograph.imagePath = 'petticoat.jpg'
+photograph.save()
+
+itemSpec = hmod.ItemSpecifications()
+itemSpec.name = 'Womens White PettiCoat'
+itemSpec.description = 'A sweet loking white petticoat with ornate inlaid flower design.'
+itemSpec.price = '15.35'
+itemSpec.manufacturer = 'old people'
+itemSpec.user = user
+itemSpec.photograph = photograph
+itemSpec.category = cat
+itemSpec.save()
 
 item = hmod.Item()
 item.forSale = 'True'
@@ -206,45 +307,177 @@ item.itemSpecifications = itemSpec
 item.save()
 
 
-# serialItem = hmod.SerializedItem()
-# serialItem.serialNumber = 'abc123'
-# serialItem.dateIn = '2015-03-07 12:01'
-# serialItem.conditionNew = 'True'
-# serialItem.notes = 'serial item notes...'
-# serialItem.save()
-#
-#
-# wardItem = hmod.WardrobeItem()
-# wardItem.size = '5'
-# wardItem.sizeModifier = '6'
-# wardItem.gender = 'Male'
-# wardItem.color = 'blue'
-# wardItem.pattern = 'pattern is lame'
-# wardItem.startYear = '2000-01-01'
-# wardItem.endYear = '2010-01-01'
-# wardItem.note = 'wardrobe item note...'
-# wardItem.save()
+photograph = hmod.Photograph()
+photograph.imagePath = 'stirrup_irons.jpg'
+photograph.save()
+
+itemSpec = hmod.ItemSpecifications()
+itemSpec.name = 'Stirrup Irons'
+itemSpec.description = 'Sturdy new handmade stirrup irons for horesback riding'
+itemSpec.price = '20.00'
+itemSpec.manufacturer = 'The Blacksmith'
+itemSpec.user = user
+itemSpec.photograph = photograph
+itemSpec.category = cat
+itemSpec.save()
+
+item = hmod.Item()
+item.forSale = 'True'
+item.quantityOnHand = '4'
+item.cost = '4.44'
+item.itemSpecifications = itemSpec
+item.save()
+
+
+photograph = hmod.Photograph()
+photograph.imagePath = 'teapot.jpg'
+photograph.save()
+
+itemSpec = hmod.ItemSpecifications()
+itemSpec.name = 'Fancy Silver Teapot'
+itemSpec.description = 'A silver teapot with floral design, and a wooden handel'
+itemSpec.price = '350.00'
+itemSpec.manufacturer = 'The Queen'
+itemSpec.user = user
+itemSpec.photograph = photograph
+itemSpec.category = cat
+itemSpec.save()
+
+item = hmod.Item()
+item.forSale = 'True'
+item.quantityOnHand = '1'
+item.cost = '200'
+item.itemSpecifications = itemSpec
+item.save()
+
+
+photograph = hmod.Photograph()
+photograph.imagePath = 'fakebell.jpg'
+photograph.save()
+
+itemSpec = hmod.ItemSpecifications()
+itemSpec.name = 'Replica Liberty Bell'
+itemSpec.description = 'Small brass replica of the liberty bell on a wooden base.'
+itemSpec.price = '20.00'
+itemSpec.manufacturer = 'John F. Street'
+itemSpec.user = user
+itemSpec.photograph = photograph
+itemSpec.category = cat
+itemSpec.save()
+
+item = hmod.Item()
+item.forSale = 'True'
+item.quantityOnHand = '40'
+item.cost = '10'
+item.itemSpecifications = itemSpec
+item.save()
+
+photograph = hmod.Photograph()
+photograph.imagePath = 'goves_breeches.jpg'
+photograph.save()
+
+itemSpec = hmod.ItemSpecifications()
+itemSpec.name = 'Goves Breeches'
+itemSpec.description = 'Red Breeches, with a 36 in waist'
+itemSpec.price = '30.33'
+itemSpec.manufacturer = 'Gove Allen'
+itemSpec.user = user
+itemSpec.photograph = photograph
+itemSpec.category = cat
+itemSpec.save()
 
 
 rentalItem = hmod.RentalItem()
-rentalItem.forSale = 'True'
-rentalItem.quantityOnHand = '5'
-rentalItem.cost = '5.55'
+rentalItem.forSale = 'False'
+rentalItem.quantityOnHand = '1'
+rentalItem.cost = '20.22'
 rentalItem.itemSpecifications = itemSpec
-rentalItem.serialNumber = 'abc123'
+rentalItem.serialNumber = '123abc'
 rentalItem.dateIn = '2015-03-07 12:01'
 rentalItem.conditionNew = 'True'
-rentalItem.notes = 'serial item notes...'
-rentalItem.size = '5'
+rentalItem.notes = 'Goves Breeches Notes'
+rentalItem.size = '36'
 rentalItem.sizeModifier = '6'
 rentalItem.gender = 'Male'
-rentalItem.color = 'blue'
-rentalItem.pattern = 'pattern is lame'
-rentalItem.startYear = '2000-01-01'
-rentalItem.endYear = '2010-01-01'
-rentalItem.note = 'wardrobe item note...'
-rentalItem.timesRented = '1'
+rentalItem.color = 'Red'
+rentalItem.pattern = 'solid'
+rentalItem.startYear = '1700-01-01'
+rentalItem.endYear = '1750-01-01'
+rentalItem.note = 'rental note for goves breeches'
+rentalItem.timesRented = '3'
+rentalItem.dailyPrice = '3.50'
+rentalItem.save()
+
+
+photograph = hmod.Photograph()
+photograph.imagePath = 'meservys_breeches.jpg'
+photograph.save()
+
+itemSpec = hmod.ItemSpecifications()
+itemSpec.name = 'Meservy''s Breeches'
+itemSpec.description = 'Maron Breeches, with a 40 in waist'
+itemSpec.price = '30.33'
+itemSpec.manufacturer = 'Meservy'
+itemSpec.user = user
+itemSpec.photograph = photograph
+itemSpec.category = cat
+itemSpec.save()
+
+rentalItem = hmod.RentalItem()
+rentalItem.forSale = 'False'
+rentalItem.quantityOnHand = '1'
+rentalItem.cost = '6.55'
+rentalItem.itemSpecifications = itemSpec
+rentalItem.serialNumber = '123456'
+rentalItem.dateIn = '2015-03-07 12:01'
+rentalItem.conditionNew = 'False'
+rentalItem.notes = 'Meservys Breeches Notes'
+rentalItem.size = '40'
+rentalItem.sizeModifier = '8'
+rentalItem.gender = 'Male'
+rentalItem.color = 'maroon'
+rentalItem.pattern = 'solid'
+rentalItem.startYear = '1710-01-01'
+rentalItem.endYear = '1730-01-01'
+rentalItem.note = 'rental note for meservys breeches'
+rentalItem.timesRented = '3'
 rentalItem.dailyPrice = '2.50'
+rentalItem.save()
+
+
+photograph = hmod.Photograph()
+photograph.imagePath = 'overcoat.jpg'
+photograph.save()
+
+itemSpec = hmod.ItemSpecifications()
+itemSpec.name = 'Red and Mustard Coat'
+itemSpec.description = 'Long coat W/ brass buttons'
+itemSpec.price = '300.33'
+itemSpec.manufacturer = 'Chris int'
+itemSpec.user = user
+itemSpec.photograph = photograph
+itemSpec.category = cat
+itemSpec.save()
+
+rentalItem = hmod.RentalItem()
+rentalItem.forSale = 'False'
+rentalItem.quantityOnHand = '1'
+rentalItem.cost = '300.55'
+rentalItem.itemSpecifications = itemSpec
+rentalItem.serialNumber = '30154'
+rentalItem.dateIn = '2015-03-07 12:01'
+rentalItem.conditionNew = 'Trues'
+rentalItem.notes = 'The coat is in great condition, note.'
+rentalItem.size = '46'
+rentalItem.sizeModifier = '42'
+rentalItem.gender = 'Male'
+rentalItem.color = 'Red'
+rentalItem.pattern = 'solid'
+rentalItem.startYear = '1700-01-01'
+rentalItem.endYear = '1760-01-01'
+rentalItem.note = 'rental note for coat'
+rentalItem.timesRented = '0'
+rentalItem.dailyPrice = '7.50'
 rentalItem.save()
 
 
@@ -272,6 +505,23 @@ saleItem.quantity = '2'
 saleItem.item = item
 saleItem.save()
 
+rental = hmod.Rental()
+rental.transaction = trans
+rental.rentalTime = '2015-03-01 12:01'
+rental.dueDate = '2015-01-06 12:01'
+# rental.returnTime = models.DateTimeField(null=True, blank=True, auto_now=False, auto_now_add=False)
+rental.discountPercent = .10
+rental.rentalItem = rentalItem
+rental.save()
+
+rental = hmod.Rental()
+rental.transaction = trans
+rental.rentalTime = '2015-03-01 12:01'
+rental.dueDate = '2015-02-06 12:01'
+# rental.returnTime = models.DateTimeField(null=True, blank=True, auto_now=False, auto_now_add=False)
+rental.discountPercent = .10
+rental.rentalItem = rentalItem
+rental.save()
 
 rental = hmod.Rental()
 rental.transaction = trans
@@ -282,6 +532,14 @@ rental.discountPercent = .10
 rental.rentalItem = rentalItem
 rental.save()
 
+rental = hmod.Rental()
+rental.transaction = trans
+rental.rentalTime = '2015-03-01 12:01'
+rental.dueDate = '2015-04-06 12:01'
+# rental.returnTime = models.DateTimeField(null=True, blank=True, auto_now=False, auto_now_add=False)
+rental.discountPercent = .10
+rental.rentalItem = rentalItem
+rental.save()
 
 rental = hmod.Rental()
 rental.transaction = trans

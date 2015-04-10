@@ -2,26 +2,41 @@
 
 <%block name="content">
 
-	%for item in items:
-		<div class="item-container">
-			<div class="item" data-id="${ item.entity_ptr_id }">
-				<div class="photograph" style="background-image:url('/static/homepage/media/img/${ item.itemSpecifications.photograph.imagePath }')"></div>
-				<div class="info">
-					<span class="name">${ item.itemSpecifications.name }</span>
-					<span class="price">${ item.itemSpecifications.price }</span>
-				</div>
-				<label for="qty">Qty: </label>
-				<input name="qty" id="qty" type="text" value=${ item.shopping_cart_quantity} style="width: 50px;display: inline-block;	"/>
-				<a data-id="${ item.entity_ptr_id }" class="update btn btn-warning">Update</a>
-				<a data-id="${ item.entity_ptr_id }" class="delete btn btn-warning">Delete</a>
-			</div>
-		</div>
-	%endfor
-
 	%if len(items) > 0:
-		<a href="/homepage/checkout/" class="btn btn-warning">Checkout</a>
+		<a href="/homepage/checkout/" class="checkout btn btn-warning">Checkout</a>
 	%else:
 		<p class="empty-cart">Your cart is empty</p>
 	%endif
+
+	<% total_cart = 0 %>
+	<% total = 0 %>
+
+	%for item in items:
+		<div class="item-container">
+			<a data-id="${ item.entity_ptr_id }" class="delete btn btn-danger">Remove</a>
+			<div class="item" data-id="${ item.entity_ptr_id }">
+				<img class="photograph" src="/static/homepage/media/items/${ item.itemSpecifications.photograph.imagePath }" />
+				<div class="info">
+					<span class="name">${ item.itemSpecifications.name }</span><br>
+					<span class="price">$${ item.itemSpecifications.price } item</span><br><br>
+					<div class="quantity">
+						<label for="qty">Qty: </label>
+						<input name="qty" id="qty" type="text" value=${ item.shopping_cart_quantity} style="width: 50px;display: inline-block;	"/>
+						<a data-id="${ item.entity_ptr_id }" class="update btn btn-warning">Update</a>
+					</div>
+				</div>
+				<br>
+			</div>
+
+			<% total += item.shopping_cart_quantity * item.itemSpecifications.price %>
+			<% total_cart += total %>
+			<div id="total">
+				<span class="item-total-text">Item Total</span><span class="item-total">$${ total }</span>
+			</div>
+		</div>
+	%endfor
+	<div id="total-cart">
+		<span class="cart-total-text">Total</span><span class="cart-total">$${ total_cart }</span>
+	</div>
 
 </%block>

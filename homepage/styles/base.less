@@ -497,7 +497,7 @@ form {
 	height: 40px;
 	display: block;
 	position: relative;
-	
+
 	#search-container {
 		background-color: rgba(9,38,64, .8);
 		width: 100%;
@@ -509,6 +509,9 @@ form {
 			margin: 0 auto;
 			top: 7px;
 			width: 350px;
+			@media screen and (max-width: 400px) {
+				width: 280px;
+			}
 
 			.height {
 				height: 25px;
@@ -521,7 +524,7 @@ form {
 				box-shadow: inset 0px 0px 5px -2px black;
 				.height;
 				float: left;
-				color: grey;
+				color: lightgrey;
 				padding: 0 10px 0 25px;
 			}
 			img {

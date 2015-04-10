@@ -31,3 +31,11 @@
 /*th:hover .message-box {*/
     /*bottom: 45px;*/
 /*}*/
+
+#items-form {
+    padding: 40px;
+}
+#items-form .btn {
+    margin-left: 10px;
+    margin-top: 20px;
+}

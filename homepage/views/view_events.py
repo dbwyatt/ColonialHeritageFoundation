@@ -31,7 +31,7 @@ def order(request):
 
     events['events'] = hmod.Event.objects.all().order_by(order)
 
-    return templater.render_to_response(request, 'events.html', events)
+    return templater.render_to_response(request, 'view_events.html', events)
 
 @view_function
 def getEventDescription(request):

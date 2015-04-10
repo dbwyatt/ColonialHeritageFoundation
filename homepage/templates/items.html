@@ -13,6 +13,8 @@
             <th data-name="itemSpecifications__price">Price</th>
             <th data-name="itemSpecifications__user__first_name">Owner</th>
             <th data-name="cost">Cost</th>
+			<th data-name="quantityOnHand">Quantity on Hand</th>
+			<th data-name="forSale">For Sale</th>
             <th>Actions</th>
         </tr>
         %for item in items:
@@ -22,7 +24,13 @@
                 <td>$${ item.itemSpecifications.price }</td>
                 <td>${ item.itemSpecifications.user.first_name } ${ item.itemSpecifications.user.last_name }</td>
                 <td>$${ item.cost }</td>
-                <td style="text-align:center;"><a href="#">Edit</a> | <a href="/homepage/items.delete/${ item.entity_ptr_id }">Delete</a></td>
+				<td>${ item.quantityOnHand }</td>
+				%if item.forSale == True:
+					<td>Yes</td>
+				%else:
+					<td>No</td>
+				%endif
+                <td style="text-align:center;"><a href="#" class="edit-item" data-id="${ item.entity_ptr_id }">Edit</a> | <a href="/homepage/items.delete/${ item.entity_ptr_id }">Delete</a></td>
             </tr>
         %endfor
     </table>

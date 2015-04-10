@@ -24,7 +24,7 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
-	<link rel="icon" type="image/x-icon" href="/static/homepage/media/featehr.png" />
+	<link rel="icon" type="image/x-icon" href="/static/homepage/media/feather.png" />
 
 	## render the css with the same name as this page
 	${ static_renderer.get_template_css(request, context)  }
@@ -61,14 +61,12 @@
 					<li class="dropdown">
 					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin<span class="caret"></span></a>
 					  <ul class="dropdown-menu" role="menu">
-						<li><a href="/homepage/areas/">Edit Areas</a></li>
-						<li><a href="/homepage/events/">Edit Events</a></li>
-						<li><a href="/homepage/items/">Edit Items</a></li>
-						<li><a href="/homepage/rentableitems/">Edit Rentable Items</a></li>
-						<li class="divider"></li>
-						<li><a href="/homepage/users/">Users</a></li>
+					    <li><a href="/homepage/items/">Items</a></li>
+					    <li><a href="/homepage/events/">Events</a></li>
+						  <li><a href="/homepage/rentableitems/">Rentable Items</a></li>
+						  <li><a href="/homepage/users/">Users</a></li>
+						  <li class="divider"></li>
 						<li><a href="/homepage/rentableitems.late/">Late Rentals</a></li>
-						<li><a href="/homepage/rentableitems.email_late/">Email Late Rentals</a></li>
 						<li><a href="/homepage/rentableitems_return/">Returns</a></li>
 					  </ul>
 					</li>
@@ -98,16 +96,13 @@
 						<ul class="dropdown-menu" role="menu">
 						  <li><p><strong>Hello, ${ user.first_name }</strong></p></li>
 						  <li class="divider"></li>
-						  <li><a href="#">Summary</a></li>
 						  <li><a href="/homepage/account.recent_activity/">Recent Activity</a></li>
-						  <li><a href="#">Your Orders</a></li>
-						  <li class="divider"></li>
 						  <li><a href="/homepage/account/">Account Details</a></li>
 						  <li class="divider"></li>
-						  <li><a href="/homepage/logout/">Log Out</a></li>
+						  <li><a href="#" id="logout-button">Log Out</a></li>
 						</ul>
 					  </li>
-					  <li><a id="logout-button">Logout</a></li>
+					  <!-- <li><a id="logout-button">Logout</a></li> -->
 				  % else:
 					  <li>
 						  <a id="login-button" data-toggle="modal" data-target="#login-modal" type="button">Login</a>
@@ -133,10 +128,10 @@
 			<!-- Search Bar -->
 			<div id="search">
 				<div id="search-container">
-					<form id="search-form">
+					<form id="search-form" method="POST">
 						<img src="/static/homepage/media/search.png" />
 						<input type="text" id="search-box" />
-						<button type="button" for="search-box">Search</button>
+						<button type="button" for="search-box" id="search-button">Search</button>
 					</form>
 				</div>
 			</div>

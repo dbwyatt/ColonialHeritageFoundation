@@ -80,6 +80,11 @@ def process_request(request):
                 emailbody = templater.render(request, 'checkout_receipt.html', email)
                 send_mail(emailsubject, emailbody, from_email, [to_email.email], html_message=emailbody, fail_silently=False)
 
+                for x, y in request.session['shopping_cart'].items():
+                    old = hmod.Item.objects.get(entity_ptr_id=x)
+                    old.quantityOnHand -= y
+                    old.save()
+
                 del request.session['shopping_cart']
                 return templater.render_to_response(request, 'checkout.success.html', params)
 

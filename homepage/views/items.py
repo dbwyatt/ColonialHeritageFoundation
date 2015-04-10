@@ -22,6 +22,7 @@ def process_request(request):
 
 
 @view_function
+@permission_required('homepage.add_user')
 def edit(request):
     params = {}
 
@@ -34,18 +35,26 @@ def edit(request):
         'name': item.itemSpecifications.name,
         'description': item.itemSpecifications.description,
         'price': item.itemSpecifications.price,
-        'owner': item.user.first_name + item.user.last_name,
+        'owner': item.itemSpecifications.user.first_name + item.itemSpecifications.user.last_name,
         'cost': item.cost,
+        'quantityOnHand': item.quantityOnHand,
+        'forSale': item.forSale
     })
     if request.method == 'POST':
         form = ItemEditForm(request.POST)
         if form.is_valid():
-            item.name = form.cleaned_data['name']
-            item.description = form.cleaned_data['description']
-            item.value = form.cleaned_data['value']
-            item.standardRentalPrice = form.cleaned_data['standardRentalPrice']
-            item.legalEntityID_id = form.cleaned_data['owner']
-            item.save()
+            itemSpec = item.itemSpecifications
+            itemSpec.name = form.cleaned_data['name']
+            itemSpec.description = form.cleaned_data['description']
+            itemSpec.user_id = form.cleaned_data['owner']
+            itemSpec.price = form.cleaned_data['price']
+            item.cost = form.cleaned_data['cost']
+            if form.cleaned_data['forSale'] == 'True':
+                item.forSale = True
+            elif form.cleaned_data['forSale'] == 'False':
+                item.forSale = False
+            item.quantityOnHand = form.cleaned_data['quantityOnHand']
+            item.save(force_update=True)
             return HttpResponseRedirect('/homepage/items/')
 
     params['form'] = form
@@ -59,6 +68,8 @@ class ItemEditForm(forms.Form):
     price = forms.CharField(label='Price')
     owner = forms.ChoiceField(label='Owner', choices=[(x.id, x.first_name + ' ' + x.last_name) for x in hmod.User.objects.all()])
     cost = forms.CharField(label='Cost')
+    quantityOnHand = forms.CharField(label='Quantity on Hand')
+    forSale = forms.ChoiceField(label='For Sale', choices=(('True', 'Yes'), ('False', 'No')))
 
     def clean_name(self):
         if len(self.cleaned_data['name']) < 1:
@@ -70,18 +81,19 @@ class ItemEditForm(forms.Form):
             raise forms.ValidationError('Please enter a description.')
         return self.cleaned_data['description']
 
-    def clean_value(self):
-        if self.cleaned_data['value'] < 0:
+    def clean_price(self):
+        if float(self.cleaned_data['price']) < 0:
             raise forms.ValidationError('Please enter a value.')
-        return self.cleaned_data['value']
+        return self.cleaned_data['price']
 
     def clean_cost(self):
-        if self.cleaned_data['standardRentalPrice'] < 0:
-            raise forms.ValidationError('Please enter a rental price.')
-        return self.cleaned_data['standardRentalPrice']
+        if float(self.cleaned_data['cost']) < 0:
+            raise forms.ValidationError('Please enter a value.')
+        return self.cleaned_data['cost']
 
 
 @view_function
+@permission_required('homepage.add_user')
 def create(request):
 
     params = {}
@@ -92,16 +104,22 @@ def create(request):
         'price': '',
         'owner': '',
         'cost': '',
+        'quantityOnHand': '',
+        'forSale': '',
     })
     if request.method == 'POST':
         form = ItemEditForm(request.POST)
         if form.is_valid():
+            itemSpec = hmod.ItemSpecifications()
+            itemSpec.name = form.cleaned_data['name']
+            itemSpec.description = form.cleaned_data['description']
+            itemSpec.user_id = form.cleaned_data['owner']
+            itemSpec.price = form.cleaned_data['price']
             item = hmod.Item()
-            item.name = form.cleaned_data['name']
-            item.description = form.cleaned_data['description']
-            item.value = form.cleaned_data['value']
-            item.standardRentalPrice = form.cleaned_data['standardRentalPrice']
-            item.legalEntityID_id = form.cleaned_data['owner']
+            item.itemSpecifications = itemSpec
+            item.cost = form.cleaned_data['cost']
+            item.quantityOnHand = form.cleaned_data['quantityOnHand']
+            item.forSale = form.cleaned_data['forSale']
             item.save()
             return HttpResponseRedirect('/homepage/items/')
 

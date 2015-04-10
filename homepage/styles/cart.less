@@ -1,57 +1,130 @@
-.item-container {
-	display: inline-block;
-	min-width: 25%;
-	min-height: 400px;
-	box-shadow:0 0 0 1px lightgrey;
-	position: relative
+.checkout {
+	float: right;
+	margin-bottom: 20px;
 }
 
-.item-container .item {
-	display: block;
-	padding: 10px;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	left:0
-}
+#cart-modal {
 
-.item-container .item .photograph {
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-	height: 75%
-}
+	.modal-body {
+		padding: 15px 50px;
+//		background-color: rgba(9,38,64,.7);
+	}
 
-.item-container .item .info {
-	height: 15%;
-	width: 100%;
-	clear: both;
-	overflow: hidden;
-	padding: 10px;
-	font-size: 21px
-}
+	.item-container {
+//		max-width: 600px;
+//		min-height: 400px;
+//		box-shadow: 0 1px 0 0 lightgrey, 0 -1px 0 0 lightgrey;
+		position: relative;
+		display: block;
+		margin: 0;
+		width: initial;
+		white-space: nowrap;
+		clear: both;
 
-.item-container .item .info .name {
-	float: left
-}
+		.delete {
+			display: inline-block;
+			position: relative;
+//			margin-right: 40px;
+		}
 
-.item-container .item .info .price {
-	float: right
-}
+		.item {
+			display: inline-block;
+			padding: 75px 0 10px;
+			position: relative;
+			box-shadow: none;
+			width: 500px;
+			margin-left: 35px;
 
-.item-container .item .buy {
-	width: 75%;
-	display: inline-block;
-	margin: auto;
-	left: 0;
-	right: 0;
-	transition: all .5s linear;
-}
+			.photograph {
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				height: 100px;
+				display: inline-block;
+			}
 
-.modal .item-container {
-	width: 300px;
-	display: block;
+			.info {
+				width: initial;
+				padding: initial;
+				font-size: 17px;
+				display: inline-block;
+				vertical-align: top;
+//				margin-left: 25px;
+				float: right;
+
+				.name {
+					color: white;
+					font-size: 19px;
+					float: right;
+				}
+				.price {
+					color: white;
+					float: right;
+				}
+			}
+
+			.quantity {
+				display: inline-block;
+				margin-left: 25px;
+				float: right;
+
+				label {
+					color: white;
+				}
+
+				input {
+					vertical-align: middle;
+					height: 35px;
+				}
+			}
+			.buy {
+				width: 75%;
+				display: inline-block;
+				margin: auto;
+				left: 0;
+				right: 0;
+				transition: all .5s linear;
+			}
+		}
+
+		#total {
+			color: white;
+			overflow: hidden;
+//			width: 140px;
+			font-size: 17px;
+			text-align: right;
+
+			.item-total-text {
+				font-weight: bold;
+//				float: left;
+			}
+			.item-total {
+				margin-left: 50px;
+				float: right;
+			}
+		}
+	}
+
+	#total-cart {
+		color: white;
+		overflow: hidden;
+//		width: 140px;
+		font-size: 17px;
+		margin: 20px 0;
+		display: block;
+		text-align: right;
+		padding-top: 20px;
+		box-shadow: 0px -1px 0px 0px white;
+
+		.cart-total-text {
+			font-weight: bold;
+//			float: right;
+		}
+		.cart-total {
+			margin-left: 50px;
+			float: right;
+		}
+	}
 }
 
 .empty-cart {
